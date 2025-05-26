@@ -312,9 +312,11 @@ func (rf *Raft) AppendEntries(args *AppendEntriesArgs, reply *AppendEntriesReply
 
 	// could be a heartbeat message from a leader
 	if len(args.Entries) == 0 {
-		Debug(dInfo, "Server %d(term: %d) received heartbeat from leader id %d with args %v\n", rf.me, rf.electionState.CurrentTerm, args.LeaderId, args)
+		Debug(dInfo, "Server %d(term: %d) with role %s received heartbeat from leader id %d with args %v\n",
+			rf.me, rf.electionState.CurrentTerm, roleMap[rf.electionState.Role], args.LeaderId, args)
 	} else {
-		Debug(dInfo, "Server %d(term: %d) received logs from leader id %d with args %v\n", rf.me, rf.electionState.CurrentTerm, args.LeaderId, args)
+		Debug(dInfo, "Server %d(term: %d) role %s received logs from leader id %d with args %v\n",
+			rf.me, rf.electionState.CurrentTerm, roleMap[rf.electionState.Role], args.LeaderId, args)
 	}
 
 	// not a heart beat message, processing logs from append entries request

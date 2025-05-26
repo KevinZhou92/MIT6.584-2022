@@ -1,292 +1,571 @@
-000029 INFO Server 0 started with electionState: ElectionState: role: Follower, CurrentTerm: 0, VotedFor: -1, logs: [{0 0}], snapshotState: SnapshotState: LastIncludedIndex: -1, LastIncludedTerm: -1
-000032 INFO Server 0 started with PeerIndexState: &{[1 1 1] [0 0 0]}
-000033 INFO Server 0 started with term 0
-000034 INFO Server 0 started applier
-000043 INFO Server 1 started with electionState: ElectionState: role: Follower, CurrentTerm: 0, VotedFor: -1, logs: [{0 0}], snapshotState: SnapshotState: LastIncludedIndex: -1, LastIncludedTerm: -1
-000043 INFO Server 1 started with PeerIndexState: &{[1 1 1] [0 0 0]}
-000044 INFO Server 1 started with term 0
-000045 INFO Server 1 started applier
-000049 INFO Server 2 started with electionState: ElectionState: role: Follower, CurrentTerm: 0, VotedFor: -1, logs: [{0 0}], snapshotState: SnapshotState: LastIncludedIndex: -1, LastIncludedTerm: -1
-000050 INFO Server 2 started with PeerIndexState: &{[1 1 1] [0 0 0]}
-000050 INFO Server 2 started with term 0
-000051 INFO Server 2 started applier
-Test (3B): RPC byte count ...
-003708 VOTE Server 0 started election, current term 1, current role Candidate
-003722 VOTE Server 1 received request vote RequestVoteArgs{Term: 1, CandidateId: 0, LastLogIndex: 0, LastLogTerm: 0}, current electionState: ElectionState: role: Follower, CurrentTerm: 0, VotedFor: -1
-003723 VOTE Server 1's term 0 is lower than server 0's term 1
-003722 VOTE Server 2 received request vote RequestVoteArgs{Term: 1, CandidateId: 0, LastLogIndex: 0, LastLogTerm: 0}, current electionState: ElectionState: role: Follower, CurrentTerm: 0, VotedFor: -1
-003724 VOTE Server 2's term 0 is lower than server 0's term 1
-003726 VOTE Server 1's lastLogIndex 0 and lastLogTerm 0 and candidate 0's lastLogIndex 0 and lastLogTerm 0
-003727 VOTE Server 2's lastLogIndex 0 and lastLogTerm 0 and candidate 0's lastLogIndex 0 and lastLogTerm 0
-003728 VOTE Server 1 votedFor server 0, electionState: ElectionState: role: Follower, CurrentTerm: 1, VotedFor: 0
-003729 VOTE Server 2 votedFor server 0, electionState: ElectionState: role: Follower, CurrentTerm: 1, VotedFor: 0
-003733 VOTE Server 0 received a vote, current vote 2
-003734 LEAD Server 0 has 2 votes with term 1(log size: 1) and is LEADER now!
-003736 LEAD Server 0 started log replicator for server 1
-003737 LEAD Server 0 started log replicator for server 2
-003737 LEAD Server 0(term: 1, electionState: ElectionState: role: Leader, CurrentTerm: 1, VotedFor: 0) has 1 logs with lastLogTerm: 0 [thread: 1]
-003737 LEAD Server 0 has no logs to replicate for server 1
-003737 LEAD Server 0(term: 1, electionState: ElectionState: role: Leader, CurrentTerm: 1, VotedFor: 0) has 1 logs with lastLogTerm: 0 [thread: 2]
-003738 LEAD Server 0 has no logs to replicate for server 2
-003744 INFO Server 1(term: 1) received heartbeat from leader id 0 with args AppendEntriesArgs{Term: 1, LeaderId: 0, PrevLogIndex: -1, PrevLogTerm: -1, LeaderCommit: 0, Entries: []}
-003744 INFO Server 2(term: 1) received heartbeat from leader id 0 with args AppendEntriesArgs{Term: 1, LeaderId: 0, PrevLogIndex: -1, PrevLogTerm: -1, LeaderCommit: 0, Entries: []}
-003744 LOG1 Server 1 log size: 1 lastLogTerm: 0, logs: [{0 0}]
-003744 LOG1 Server 2 log size: 1 lastLogTerm: 0, logs: [{0 0}]
-004120 LOG1 Server 0 appended log {1 99} and has log size 2
-004750 LEAD Server 0(term: 1, electionState: ElectionState: role: Leader, CurrentTerm: 1, VotedFor: 0) has 2 logs with lastLogTerm: 1 [thread: 1]
-004750 LEAD Server 0(term: 1, electionState: ElectionState: role: Leader, CurrentTerm: 1, VotedFor: 0) has 2 logs with lastLogTerm: 1 [thread: 2]
-004752 LEAD Server 0 try to replicate log AppendEntriesArgs{Term: 1, LeaderId: 0, PrevLogIndex: 0, PrevLogTerm: 0, LeaderCommit: 0, Entries: [{1 99}]} to server 1
-004752 LEAD Server 0 try to replicate log AppendEntriesArgs{Term: 1, LeaderId: 0, PrevLogIndex: 0, PrevLogTerm: 0, LeaderCommit: 0, Entries: [{1 99}]} to server 2
-004763 INFO Server 2(term: 1) received logs from leader id 0 with args AppendEntriesArgs{Term: 1, LeaderId: 0, PrevLogIndex: 0, PrevLogTerm: 0, LeaderCommit: 0, Entries: [{1 99}]}
-004763 INFO Server 1(term: 1) received logs from leader id 0 with args AppendEntriesArgs{Term: 1, LeaderId: 0, PrevLogIndex: 0, PrevLogTerm: 0, LeaderCommit: 0, Entries: [{1 99}]}
-004764 LOG1 Server 2 received log entries AppendEntriesArgs{Term: 1, LeaderId: 0, PrevLogIndex: 0, PrevLogTerm: 0, LeaderCommit: 0, Entries: [{1 99}]}
-004765 PERS Server 2 log length before append: 1
-004764 LOG1 Server 1 received log entries AppendEntriesArgs{Term: 1, LeaderId: 0, PrevLogIndex: 0, PrevLogTerm: 0, LeaderCommit: 0, Entries: [{1 99}]}
-004765 PERS Server 2 log length after append: 2
-004765 LOG1 Server 2 append entries in log
-004765 PERS Server 1 log length before append: 1
-004766 PERS Server 1 log length after append: 2
-004766 LOG1 Server 1 append entries in log
-004766 LOG1 Server 2 log size: 2 lastLogTerm: 1, logs: [{0 0} {1 99}]
-004766 LOG1 Server 1 log size: 2 lastLogTerm: 1, logs: [{0 0} {1 99}]
-004774 CMIT Server 0 replicated log 1 to server 2, update next index to 2
-004774 CMIT Server 0 replicated log 1 to server 1, update next index to 2
-004774 LEAD Server 0(term: 1, electionState: ElectionState: role: Leader, CurrentTerm: 1, VotedFor: 0) has 2 logs with lastLogTerm: 1 [thread: 2]
-004774 LEAD Server 0(term: 1, electionState: ElectionState: role: Leader, CurrentTerm: 1, VotedFor: 0) has 2 logs with lastLogTerm: 1 [thread: 1]
-004775 LEAD Server 0 has no logs to replicate for server 2
-004775 LEAD Server 0 has no logs to replicate for server 1
-005260 LEAD Server 0 replicated log to majority, commits log 1 (term=1)
-005263 CMIT Server 0 sent applyMsg ApplyMsg: CommandValid: true, Command: 99, CommandIndex: 1, SnapshotValid: false, SnapshotTerm: 0, SnapshotIndex: 0
-005263 CMIT Server 0 logState: {1 1}
-005777 LEAD Server 0(term: 1, electionState: ElectionState: role: Leader, CurrentTerm: 1, VotedFor: 0) has 2 logs with lastLogTerm: 1 [thread: 2]
-005777 LEAD Server 0(term: 1, electionState: ElectionState: role: Leader, CurrentTerm: 1, VotedFor: 0) has 2 logs with lastLogTerm: 1 [thread: 1]
-005778 LEAD Server 0 has no logs to replicate for server 2
-005778 LEAD Server 0 has no logs to replicate for server 1
-006785 LEAD Server 0(term: 1, electionState: ElectionState: role: Leader, CurrentTerm: 1, VotedFor: 0) has 2 logs with lastLogTerm: 1 [thread: 2]
-006785 LEAD Server 0(term: 1, electionState: ElectionState: role: Leader, CurrentTerm: 1, VotedFor: 0) has 2 logs with lastLogTerm: 1 [thread: 1]
-006787 LEAD Server 0 has no logs to replicate for server 2
-006788 LEAD Server 0 has no logs to replicate for server 1
-007799 LEAD Server 0(term: 1, electionState: ElectionState: role: Leader, CurrentTerm: 1, VotedFor: 0) has 2 logs with lastLogTerm: 1 [thread: 2]
-007799 LEAD Server 0(term: 1, electionState: ElectionState: role: Leader, CurrentTerm: 1, VotedFor: 0) has 2 logs with lastLogTerm: 1 [thread: 1]
-007801 LEAD Server 0 has no logs to replicate for server 2
-007802 LEAD Server 0 has no logs to replicate for server 1
-008812 LEAD Server 0(term: 1, electionState: ElectionState: role: Leader, CurrentTerm: 1, VotedFor: 0) has 2 logs with lastLogTerm: 1 [thread: 2]
-008812 LEAD Server 0(term: 1, electionState: ElectionState: role: Leader, CurrentTerm: 1, VotedFor: 0) has 2 logs with lastLogTerm: 1 [thread: 1]
-008815 LEAD Server 0 has no logs to replicate for server 2
-008815 LEAD Server 0 has no logs to replicate for server 1
-009823 LEAD Server 0(term: 1, electionState: ElectionState: role: Leader, CurrentTerm: 1, VotedFor: 0) has 2 logs with lastLogTerm: 1 [thread: 1]
-009823 LEAD Server 0(term: 1, electionState: ElectionState: role: Leader, CurrentTerm: 1, VotedFor: 0) has 2 logs with lastLogTerm: 1 [thread: 2]
-009826 LEAD Server 0 has no logs to replicate for server 1
-009826 LEAD Server 0 has no logs to replicate for server 2
-010831 LEAD Server 0(term: 1, electionState: ElectionState: role: Leader, CurrentTerm: 1, VotedFor: 0) has 2 logs with lastLogTerm: 1 [thread: 2]
-010831 LEAD Server 0(term: 1, electionState: ElectionState: role: Leader, CurrentTerm: 1, VotedFor: 0) has 2 logs with lastLogTerm: 1 [thread: 1]
-010834 LEAD Server 0 has no logs to replicate for server 2
-010834 LEAD Server 0 has no logs to replicate for server 1
-011338 VOTE Server 1 started election, current term 2, current role Candidate
-011347 VOTE Server 2 received request vote RequestVoteArgs{Term: 2, CandidateId: 1, LastLogIndex: 1, LastLogTerm: 1}, current electionState: ElectionState: role: Follower, CurrentTerm: 1, VotedFor: 0
-011347 VOTE Server 0 received request vote RequestVoteArgs{Term: 2, CandidateId: 1, LastLogIndex: 1, LastLogTerm: 1}, current electionState: ElectionState: role: Leader, CurrentTerm: 1, VotedFor: 0
-011348 VOTE Server 2's term 1 is lower than server 1's term 2
-011348 VOTE Server 0's term 1 is lower than server 1's term 2
-011351 VOTE Server 2's lastLogIndex 1 and lastLogTerm 1 and candidate 1's lastLogIndex 1 and lastLogTerm 1
-011352 VOTE Server 0's lastLogIndex 1 and lastLogTerm 1 and candidate 1's lastLogIndex 1 and lastLogTerm 1
-011354 VOTE Server 2 votedFor server 1, electionState: ElectionState: role: Follower, CurrentTerm: 2, VotedFor: 1
-011355 VOTE Server 0 votedFor server 1, electionState: ElectionState: role: Follower, CurrentTerm: 2, VotedFor: 1
-011358 VOTE Server 1 received a vote, current vote 2
-011359 LEAD Server 1 has 2 votes with term 2(log size: 2) and is LEADER now!
-011363 LEAD Server 1 started log replicator for server 0
-011364 LEAD Server 1(term: 2, electionState: ElectionState: role: Leader, CurrentTerm: 2, VotedFor: 1) has 2 logs with lastLogTerm: 1 [thread: 0]
-011365 LEAD Server 1 has no logs to replicate for server 0
-011365 LEAD Server 1 started log replicator for server 2
-011366 LEAD Server 1(term: 2, electionState: ElectionState: role: Leader, CurrentTerm: 2, VotedFor: 1) has 2 logs with lastLogTerm: 1 [thread: 2]
-011366 LEAD Server 1 has no logs to replicate for server 2
-011371 INFO Server 2(term: 2) received heartbeat from leader id 1 with args AppendEntriesArgs{Term: 2, LeaderId: 1, PrevLogIndex: -1, PrevLogTerm: -1, LeaderCommit: 0, Entries: []}
-011372 LOG1 Server 2 log size: 2 lastLogTerm: 1, logs: [{0 0} {1 99}]
-011373 INFO Server 0(term: 2) received heartbeat from leader id 1 with args AppendEntriesArgs{Term: 2, LeaderId: 1, PrevLogIndex: -1, PrevLogTerm: -1, LeaderCommit: 0, Entries: []}
-011374 LOG1 Server 0 log size: 2 lastLogTerm: 1, logs: [{0 0} {1 99}]
-011841 LEAD Server 0(term: 2, electionState: ElectionState: role: Follower, CurrentTerm: 2, VotedFor: 1) has 2 logs with lastLogTerm: 1 [thread: 2]
-011840 LEAD Server 0(term: 2, electionState: ElectionState: role: Follower, CurrentTerm: 2, VotedFor: 1) has 2 logs with lastLogTerm: 1 [thread: 1]
-011843 LEAD Server 0 has no logs to replicate for server 2
-011843 LEAD Server 0 has no logs to replicate for server 1
-012376 LEAD Server 1(term: 2, electionState: ElectionState: role: Leader, CurrentTerm: 2, VotedFor: 1) has 2 logs with lastLogTerm: 1 [thread: 2]
-012376 LEAD Server 1(term: 2, electionState: ElectionState: role: Leader, CurrentTerm: 2, VotedFor: 1) has 2 logs with lastLogTerm: 1 [thread: 0]
-012378 LEAD Server 1 has no logs to replicate for server 2
-012378 LEAD Server 1 has no logs to replicate for server 0
-012855 LEAD Server 0(term: 2, electionState: ElectionState: role: Follower, CurrentTerm: 2, VotedFor: 1) has 2 logs with lastLogTerm: 1 [thread: 1]
-012854 LEAD Server 0(term: 2, electionState: ElectionState: role: Follower, CurrentTerm: 2, VotedFor: 1) has 2 logs with lastLogTerm: 1 [thread: 2]
-012857 LEAD Server 0 has no logs to replicate for server 1
-012857 LEAD Server 0 has no logs to replicate for server 2
-013388 LEAD Server 1(term: 2, electionState: ElectionState: role: Leader, CurrentTerm: 2, VotedFor: 1) has 2 logs with lastLogTerm: 1 [thread: 0]
-013388 LEAD Server 1(term: 2, electionState: ElectionState: role: Leader, CurrentTerm: 2, VotedFor: 1) has 2 logs with lastLogTerm: 1 [thread: 2]
-013390 LEAD Server 1 has no logs to replicate for server 2
-013390 LEAD Server 1 has no logs to replicate for server 0
-013868 LEAD Server 0(term: 2, electionState: ElectionState: role: Follower, CurrentTerm: 2, VotedFor: 1) has 2 logs with lastLogTerm: 1 [thread: 2]
-013868 LEAD Server 0(term: 2, electionState: ElectionState: role: Follower, CurrentTerm: 2, VotedFor: 1) has 2 logs with lastLogTerm: 1 [thread: 1]
-013870 LEAD Server 0 has no logs to replicate for server 2
-013870 LEAD Server 0 has no logs to replicate for server 1
-014395 LEAD Server 1(term: 2, electionState: ElectionState: role: Leader, CurrentTerm: 2, VotedFor: 1) has 2 logs with lastLogTerm: 1 [thread: 2]
-014395 LEAD Server 1(term: 2, electionState: ElectionState: role: Leader, CurrentTerm: 2, VotedFor: 1) has 2 logs with lastLogTerm: 1 [thread: 0]
-014397 LEAD Server 1 has no logs to replicate for server 2
-014398 LEAD Server 1 has no logs to replicate for server 0
-014881 LEAD Server 0(term: 2, electionState: ElectionState: role: Follower, CurrentTerm: 2, VotedFor: 1) has 2 logs with lastLogTerm: 1 [thread: 2]
-014881 LEAD Server 0(term: 2, electionState: ElectionState: role: Follower, CurrentTerm: 2, VotedFor: 1) has 2 logs with lastLogTerm: 1 [thread: 1]
-014883 LEAD Server 0 has no logs to replicate for server 2
-014883 LEAD Server 0 has no logs to replicate for server 1
-015403 LEAD Server 1(term: 2, electionState: ElectionState: role: Leader, CurrentTerm: 2, VotedFor: 1) has 2 logs with lastLogTerm: 1 [thread: 0]
-015402 LEAD Server 1(term: 2, electionState: ElectionState: role: Leader, CurrentTerm: 2, VotedFor: 1) has 2 logs with lastLogTerm: 1 [thread: 2]
-015406 LEAD Server 1 has no logs to replicate for server 0
-015406 LEAD Server 1 has no logs to replicate for server 2
-015894 LEAD Server 0(term: 2, electionState: ElectionState: role: Follower, CurrentTerm: 2, VotedFor: 1) has 2 logs with lastLogTerm: 1 [thread: 2]
-015894 LEAD Server 0(term: 2, electionState: ElectionState: role: Follower, CurrentTerm: 2, VotedFor: 1) has 2 logs with lastLogTerm: 1 [thread: 1]
-015896 LEAD Server 0 has no logs to replicate for server 2
-015897 LEAD Server 0 has no logs to replicate for server 1
-016416 LEAD Server 1(term: 2, electionState: ElectionState: role: Leader, CurrentTerm: 2, VotedFor: 1) has 2 logs with lastLogTerm: 1 [thread: 0]
-016416 LEAD Server 1(term: 2, electionState: ElectionState: role: Leader, CurrentTerm: 2, VotedFor: 1) has 2 logs with lastLogTerm: 1 [thread: 2]
-016418 LEAD Server 1 has no logs to replicate for server 0
-016418 LEAD Server 1 has no logs to replicate for server 2
-016905 LEAD Server 0(term: 2, electionState: ElectionState: role: Follower, CurrentTerm: 2, VotedFor: 1) has 2 logs with lastLogTerm: 1 [thread: 2]
-016905 LEAD Server 0(term: 2, electionState: ElectionState: role: Follower, CurrentTerm: 2, VotedFor: 1) has 2 logs with lastLogTerm: 1 [thread: 1]
-016907 LEAD Server 0 has no logs to replicate for server 2
-016907 LEAD Server 0 has no logs to replicate for server 1
-017423 LEAD Server 1(term: 2, electionState: ElectionState: role: Leader, CurrentTerm: 2, VotedFor: 1) has 2 logs with lastLogTerm: 1 [thread: 0]
-017423 LEAD Server 1(term: 2, electionState: ElectionState: role: Leader, CurrentTerm: 2, VotedFor: 1) has 2 logs with lastLogTerm: 1 [thread: 2]
-017426 LEAD Server 1 has no logs to replicate for server 0
-017426 LEAD Server 1 has no logs to replicate for server 2
-017429 VOTE Server 2 started election, current term 3, current role Candidate
-017436 VOTE Server 1 received request vote RequestVoteArgs{Term: 3, CandidateId: 2, LastLogIndex: 1, LastLogTerm: 1}, current electionState: ElectionState: role: Leader, CurrentTerm: 2, VotedFor: 1
-017436 VOTE Server 0 received request vote RequestVoteArgs{Term: 3, CandidateId: 2, LastLogIndex: 1, LastLogTerm: 1}, current electionState: ElectionState: role: Follower, CurrentTerm: 2, VotedFor: 1
-017437 VOTE Server 1's term 2 is lower than server 2's term 3
-017438 VOTE Server 0's term 2 is lower than server 2's term 3
-017441 VOTE Server 1's lastLogIndex 1 and lastLogTerm 1 and candidate 2's lastLogIndex 1 and lastLogTerm 1
-017441 VOTE Server 0's lastLogIndex 1 and lastLogTerm 1 and candidate 2's lastLogIndex 1 and lastLogTerm 1
-017444 VOTE Server 1 votedFor server 2, electionState: ElectionState: role: Follower, CurrentTerm: 3, VotedFor: 2
-017445 VOTE Server 0 votedFor server 2, electionState: ElectionState: role: Follower, CurrentTerm: 3, VotedFor: 2
-017451 VOTE Server 2 received a vote, current vote 2
-017452 LEAD Server 2 has 2 votes with term 3(log size: 2) and is LEADER now!
-017458 LEAD Server 2 started log replicator for server 1
-017459 LEAD Server 2(term: 3, electionState: ElectionState: role: Leader, CurrentTerm: 3, VotedFor: 2) has 2 logs with lastLogTerm: 1 [thread: 1]
-017460 LEAD Server 2 has no logs to replicate for server 1
-017457 LEAD Server 2 started log replicator for server 0
-017460 LEAD Server 2(term: 3, electionState: ElectionState: role: Leader, CurrentTerm: 3, VotedFor: 2) has 2 logs with lastLogTerm: 1 [thread: 0]
-017461 LEAD Server 2 has no logs to replicate for server 0
-017464 INFO Server 0(term: 3) received heartbeat from leader id 2 with args AppendEntriesArgs{Term: 3, LeaderId: 2, PrevLogIndex: -1, PrevLogTerm: -1, LeaderCommit: 0, Entries: []}
-017465 INFO Server 1(term: 3) received heartbeat from leader id 2 with args AppendEntriesArgs{Term: 3, LeaderId: 2, PrevLogIndex: -1, PrevLogTerm: -1, LeaderCommit: 0, Entries: []}
-017465 LOG1 Server 0 log size: 2 lastLogTerm: 1, logs: [{0 0} {1 99}]
-017465 LOG1 Server 1 log size: 2 lastLogTerm: 1, logs: [{0 0} {1 99}]
-017912 LEAD Server 0(term: 3, electionState: ElectionState: role: Follower, CurrentTerm: 3, VotedFor: 2) has 2 logs with lastLogTerm: 1 [thread: 2]
-017912 LEAD Server 0(term: 3, electionState: ElectionState: role: Follower, CurrentTerm: 3, VotedFor: 2) has 2 logs with lastLogTerm: 1 [thread: 1]
-017915 LEAD Server 0 has no logs to replicate for server 2
-017915 LEAD Server 0 has no logs to replicate for server 1
-018437 LEAD Server 1(term: 3, electionState: ElectionState: role: Follower, CurrentTerm: 3, VotedFor: 2) has 2 logs with lastLogTerm: 1 [thread: 0]
-018437 LEAD Server 1(term: 3, electionState: ElectionState: role: Follower, CurrentTerm: 3, VotedFor: 2) has 2 logs with lastLogTerm: 1 [thread: 2]
-018439 LEAD Server 1 has no logs to replicate for server 0
-018440 LEAD Server 1 has no logs to replicate for server 2
-018463 LEAD Server 2(term: 3, electionState: ElectionState: role: Leader, CurrentTerm: 3, VotedFor: 2) has 2 logs with lastLogTerm: 1 [thread: 1]
-018463 LEAD Server 2(term: 3, electionState: ElectionState: role: Leader, CurrentTerm: 3, VotedFor: 2) has 2 logs with lastLogTerm: 1 [thread: 0]
-018465 LEAD Server 2 has no logs to replicate for server 0
-018464 LEAD Server 2 has no logs to replicate for server 1
-018917 LEAD Server 0(term: 3, electionState: ElectionState: role: Follower, CurrentTerm: 3, VotedFor: 2) has 2 logs with lastLogTerm: 1 [thread: 1]
-018917 LEAD Server 0(term: 3, electionState: ElectionState: role: Follower, CurrentTerm: 3, VotedFor: 2) has 2 logs with lastLogTerm: 1 [thread: 2]
-018920 LEAD Server 0 has no logs to replicate for server 1
-018920 LEAD Server 0 has no logs to replicate for server 2
-019451 LEAD Server 1(term: 3, electionState: ElectionState: role: Follower, CurrentTerm: 3, VotedFor: 2) has 2 logs with lastLogTerm: 1 [thread: 2]
-019451 LEAD Server 1(term: 3, electionState: ElectionState: role: Follower, CurrentTerm: 3, VotedFor: 2) has 2 logs with lastLogTerm: 1 [thread: 0]
-019454 LEAD Server 1 has no logs to replicate for server 2
-019455 LEAD Server 1 has no logs to replicate for server 0
-019467 LEAD Server 2(term: 3, electionState: ElectionState: role: Leader, CurrentTerm: 3, VotedFor: 2) has 2 logs with lastLogTerm: 1 [thread: 0]
-019467 LEAD Server 2(term: 3, electionState: ElectionState: role: Leader, CurrentTerm: 3, VotedFor: 2) has 2 logs with lastLogTerm: 1 [thread: 1]
-019468 LEAD Server 2 has no logs to replicate for server 0
-019468 LEAD Server 2 has no logs to replicate for server 1
-019931 LEAD Server 0(term: 3, electionState: ElectionState: role: Follower, CurrentTerm: 3, VotedFor: 2) has 2 logs with lastLogTerm: 1 [thread: 2]
-019931 LEAD Server 0(term: 3, electionState: ElectionState: role: Follower, CurrentTerm: 3, VotedFor: 2) has 2 logs with lastLogTerm: 1 [thread: 1]
-019934 LEAD Server 0 has no logs to replicate for server 1
-019934 LEAD Server 0 has no logs to replicate for server 2
-020460 LEAD Server 1(term: 3, electionState: ElectionState: role: Follower, CurrentTerm: 3, VotedFor: 2) has 2 logs with lastLogTerm: 1 [thread: 2]
-020459 LEAD Server 1(term: 3, electionState: ElectionState: role: Follower, CurrentTerm: 3, VotedFor: 2) has 2 logs with lastLogTerm: 1 [thread: 0]
-020462 LEAD Server 1 has no logs to replicate for server 2
-020462 LEAD Server 1 has no logs to replicate for server 0
-020470 LEAD Server 2(term: 3, electionState: ElectionState: role: Leader, CurrentTerm: 3, VotedFor: 2) has 2 logs with lastLogTerm: 1 [thread: 0]
-020471 LEAD Server 2 has no logs to replicate for server 0
-020471 LEAD Server 2(term: 3, electionState: ElectionState: role: Leader, CurrentTerm: 3, VotedFor: 2) has 2 logs with lastLogTerm: 1 [thread: 1]
-020471 LEAD Server 2 has no logs to replicate for server 1
-020939 LEAD Server 0(term: 3, electionState: ElectionState: role: Follower, CurrentTerm: 3, VotedFor: 2) has 2 logs with lastLogTerm: 1 [thread: 1]
-020939 LEAD Server 0(term: 3, electionState: ElectionState: role: Follower, CurrentTerm: 3, VotedFor: 2) has 2 logs with lastLogTerm: 1 [thread: 2]
-020941 LEAD Server 0 has no logs to replicate for server 1
-020941 LEAD Server 0 has no logs to replicate for server 2
-021038 VOTE Server 0 started election, current term 4, current role Candidate
-021046 VOTE Server 2 received request vote RequestVoteArgs{Term: 4, CandidateId: 0, LastLogIndex: 1, LastLogTerm: 1}, current electionState: ElectionState: role: Leader, CurrentTerm: 3, VotedFor: 2
-021046 VOTE Server 1 received request vote RequestVoteArgs{Term: 4, CandidateId: 0, LastLogIndex: 1, LastLogTerm: 1}, current electionState: ElectionState: role: Follower, CurrentTerm: 3, VotedFor: 2
-021047 VOTE Server 2's term 3 is lower than server 0's term 4
-021047 VOTE Server 1's term 3 is lower than server 0's term 4
-021050 VOTE Server 2's lastLogIndex 1 and lastLogTerm 1 and candidate 0's lastLogIndex 1 and lastLogTerm 1
-021050 VOTE Server 1's lastLogIndex 1 and lastLogTerm 1 and candidate 0's lastLogIndex 1 and lastLogTerm 1
-021052 VOTE Server 2 votedFor server 0, electionState: ElectionState: role: Follower, CurrentTerm: 4, VotedFor: 0
-021052 VOTE Server 1 votedFor server 0, electionState: ElectionState: role: Follower, CurrentTerm: 4, VotedFor: 0
-021056 VOTE Server 0 received a vote, current vote 2
-021056 LEAD Server 0 has 2 votes with term 4(log size: 2) and is LEADER now!
-021059 LEAD Server 0 started log replicator for server 1
-021060 LEAD Server 0 started log replicator for server 2
-021060 LEAD Server 0(term: 4, electionState: ElectionState: role: Leader, CurrentTerm: 4, VotedFor: 0) has 2 logs with lastLogTerm: 1 [thread: 1]
-021061 LEAD Server 0(term: 4, electionState: ElectionState: role: Leader, CurrentTerm: 4, VotedFor: 0) has 2 logs with lastLogTerm: 1 [thread: 2]
-021061 LEAD Server 0 has no logs to replicate for server 1
-021061 LEAD Server 0 has no logs to replicate for server 2
-021065 INFO Server 1(term: 4) received heartbeat from leader id 0 with args AppendEntriesArgs{Term: 4, LeaderId: 0, PrevLogIndex: -1, PrevLogTerm: -1, LeaderCommit: 1, Entries: []}
-021065 INFO Server 2(term: 4) received heartbeat from leader id 0 with args AppendEntriesArgs{Term: 4, LeaderId: 0, PrevLogIndex: -1, PrevLogTerm: -1, LeaderCommit: 1, Entries: []}
-021066 WARN Server 1's commitIndex 0 is behind leader 0's commitIndex 1, server log count: 2, server last includedIndex -1, virtual log index 1
-021066 WARN Server 2's commitIndex 0 is behind leader 0's commitIndex 1, server log count: 2, server last includedIndex -1, virtual log index 1
-021066 WARN Server 1's commitIndex 0, lastAppliedIndex 0, server snapshotState SnapshotState: LastIncludedIndex: -1, LastIncludedTerm: -1, logSize: 2
-021066 WARN Server 2's commitIndex 0, lastAppliedIndex 0, server snapshotState SnapshotState: LastIncludedIndex: -1, LastIncludedTerm: -1, logSize: 2
-021067 LOG1 Server 1 log size: 2 lastLogTerm: 1, logs: [{0 0} {1 99}]
-021067 LOG1 Server 2 log size: 2 lastLogTerm: 1, logs: [{0 0} {1 99}]
-021472 LEAD Server 1(term: 4, electionState: ElectionState: role: Follower, CurrentTerm: 4, VotedFor: 0) has 2 logs with lastLogTerm: 1 [thread: 2]
-021473 LEAD Server 2(term: 4, electionState: ElectionState: role: Follower, CurrentTerm: 4, VotedFor: 0) has 2 logs with lastLogTerm: 1 [thread: 1]
-021474 LEAD Server 2(term: 4, electionState: ElectionState: role: Follower, CurrentTerm: 4, VotedFor: 0) has 2 logs with lastLogTerm: 1 [thread: 0]
-021475 LEAD Server 1(term: 4, electionState: ElectionState: role: Follower, CurrentTerm: 4, VotedFor: 0) has 2 logs with lastLogTerm: 1 [thread: 0]
-021477 LEAD Server 1 has no logs to replicate for server 0
-021476 LEAD Server 1 has no logs to replicate for server 2
-021477 LEAD Server 2 has no logs to replicate for server 1
-021477 LEAD Server 2 has no logs to replicate for server 0
-021952 LEAD Server 0(term: 4, electionState: ElectionState: role: Leader, CurrentTerm: 4, VotedFor: 0) has 2 logs with lastLogTerm: 1 [thread: 1]
-021952 LEAD Server 0(term: 4, electionState: ElectionState: role: Leader, CurrentTerm: 4, VotedFor: 0) has 2 logs with lastLogTerm: 1 [thread: 2]
-021954 LEAD Server 0 has no logs to replicate for server 1
-021954 LEAD Server 0 has no logs to replicate for server 2
-022068 LEAD Server 0(term: 4, electionState: ElectionState: role: Leader, CurrentTerm: 4, VotedFor: 0) has 2 logs with lastLogTerm: 1 [thread: 1]
-022068 LEAD Server 0(term: 4, electionState: ElectionState: role: Leader, CurrentTerm: 4, VotedFor: 0) has 2 logs with lastLogTerm: 1 [thread: 2]
-022070 LEAD Server 0 has no logs to replicate for server 1
-022071 LEAD Server 0 has no logs to replicate for server 2
-022483 LEAD Server 2(term: 4, electionState: ElectionState: role: Follower, CurrentTerm: 4, VotedFor: 0) has 2 logs with lastLogTerm: 1 [thread: 1]
-022483 LEAD Server 2(term: 4, electionState: ElectionState: role: Follower, CurrentTerm: 4, VotedFor: 0) has 2 logs with lastLogTerm: 1 [thread: 0]
-022483 LEAD Server 1(term: 4, electionState: ElectionState: role: Follower, CurrentTerm: 4, VotedFor: 0) has 2 logs with lastLogTerm: 1 [thread: 2]
-022483 LEAD Server 1(term: 4, electionState: ElectionState: role: Follower, CurrentTerm: 4, VotedFor: 0) has 2 logs with lastLogTerm: 1 [thread: 0]
-022485 LEAD Server 2 has no logs to replicate for server 1
-022486 LEAD Server 2 has no logs to replicate for server 0
-022486 LEAD Server 1 has no logs to replicate for server 2
-022486 LEAD Server 1 has no logs to replicate for server 0
-022962 LEAD Server 0(term: 4, electionState: ElectionState: role: Leader, CurrentTerm: 4, VotedFor: 0) has 2 logs with lastLogTerm: 1 [thread: 1]
-022960 LEAD Server 0(term: 4, electionState: ElectionState: role: Leader, CurrentTerm: 4, VotedFor: 0) has 2 logs with lastLogTerm: 1 [thread: 2]
-022964 LEAD Server 0 has no logs to replicate for server 1
-022964 LEAD Server 0 has no logs to replicate for server 2
-023073 LEAD Server 0(term: 4, electionState: ElectionState: role: Leader, CurrentTerm: 4, VotedFor: 0) has 2 logs with lastLogTerm: 1 [thread: 2]
-023074 LEAD Server 0 has no logs to replicate for server 2
-023073 LEAD Server 0(term: 4, electionState: ElectionState: role: Leader, CurrentTerm: 4, VotedFor: 0) has 2 logs with lastLogTerm: 1 [thread: 1]
-023074 LEAD Server 0 has no logs to replicate for server 1
-023488 LEAD Server 1(term: 4, electionState: ElectionState: role: Follower, CurrentTerm: 4, VotedFor: 0) has 2 logs with lastLogTerm: 1 [thread: 0]
-023490 LEAD Server 2(term: 4, electionState: ElectionState: role: Follower, CurrentTerm: 4, VotedFor: 0) has 2 logs with lastLogTerm: 1 [thread: 1]
-023491 LEAD Server 1 has no logs to replicate for server 0
-023489 LEAD Server 1(term: 4, electionState: ElectionState: role: Follower, CurrentTerm: 4, VotedFor: 0) has 2 logs with lastLogTerm: 1 [thread: 2]
-023488 LEAD Server 2(term: 4, electionState: ElectionState: role: Follower, CurrentTerm: 4, VotedFor: 0) has 2 logs with lastLogTerm: 1 [thread: 0]
-023491 LEAD Server 2 has no logs to replicate for server 1
-023492 LEAD Server 1 has no logs to replicate for server 2
-023492 LEAD Server 2 has no logs to replicate for server 0
-023971 LEAD Server 0(term: 4, electionState: ElectionState: role: Leader, CurrentTerm: 4, VotedFor: 0) has 2 logs with lastLogTerm: 1 [thread: 1]
-023975 LEAD Server 0(term: 4, electionState: ElectionState: role: Leader, CurrentTerm: 4, VotedFor: 0) has 2 logs with lastLogTerm: 1 [thread: 2]
-023976 LEAD Server 0 has no logs to replicate for server 1
-023977 LEAD Server 0 has no logs to replicate for server 2
-024078 LEAD Server 0(term: 4, electionState: ElectionState: role: Leader, CurrentTerm: 4, VotedFor: 0) has 2 logs with lastLogTerm: 1 [thread: 2]
-024078 LEAD Server 0(term: 4, electionState: ElectionState: role: Leader, CurrentTerm: 4, VotedFor: 0) has 2 logs with lastLogTerm: 1 [thread: 1]
-024080 LEAD Server 0 has no logs to replicate for server 2
-024081 LEAD Server 0 has no logs to replicate for server 1
---- FAIL: TestRPCBytes3B (2.43s)
-    config.go:601: one(99) failed to reach agreement
+000010 INFO Server 0 started with electionState: ElectionState: role: Follower, CurrentTerm: 0, VotedFor: -1, logs: [{0 0}], snapshotState: SnapshotState: LastIncludedIndex: -1, LastIncludedTerm: -1
+000012 INFO Server 0 started with PeerIndexState: &{[1 1 1 1 1] [0 0 0 0 0]}
+000012 INFO Server 0 started with term 0
+000013 INFO Server 0 started applier
+000016 INFO Server 1 started with electionState: ElectionState: role: Follower, CurrentTerm: 0, VotedFor: -1, logs: [{0 0}], snapshotState: SnapshotState: LastIncludedIndex: -1, LastIncludedTerm: -1
+000016 INFO Server 1 started with PeerIndexState: &{[1 1 1 1 1] [0 0 0 0 0]}
+000016 INFO Server 1 started with term 0
+000017 INFO Server 1 started applier
+000018 INFO Server 2 started with electionState: ElectionState: role: Follower, CurrentTerm: 0, VotedFor: -1, logs: [{0 0}], snapshotState: SnapshotState: LastIncludedIndex: -1, LastIncludedTerm: -1
+000018 INFO Server 2 started with PeerIndexState: &{[1 1 1 1 1] [0 0 0 0 0]}
+000019 INFO Server 2 started with term 0
+000019 INFO Server 2 started applier
+000020 INFO Server 3 started with electionState: ElectionState: role: Follower, CurrentTerm: 0, VotedFor: -1, logs: [{0 0}], snapshotState: SnapshotState: LastIncludedIndex: -1, LastIncludedTerm: -1
+000020 INFO Server 3 started with PeerIndexState: &{[1 1 1 1 1] [0 0 0 0 0]}
+000020 INFO Server 3 started with term 0
+000022 INFO Server 4 started with electionState: ElectionState: role: Follower, CurrentTerm: 0, VotedFor: -1, logs: [{0 0}], snapshotState: SnapshotState: LastIncludedIndex: -1, LastIncludedTerm: -1
+000021 INFO Server 3 started applier
+000022 INFO Server 4 started with PeerIndexState: &{[1 1 1 1 1] [0 0 0 0 0]}
+000023 INFO Server 4 started with term 0
+000024 INFO Server 4 started applier
+Test (3B): no agreement if too many followers disconnect ...
+000025 LOG1 Server 1(term: 0) is Follower and Start() received command 10
+000025 LOG1 Server 2(term: 0) is Follower and Start() received command 10
+000026 LOG1 Server 3(term: 0) is Follower and Start() received command 10
+000026 LOG1 Server 4(term: 0) is Follower and Start() received command 10
+000026 LOG1 Server 0(term: 0) is Follower and Start() received command 10
+000542 LOG1 Server 1(term: 0) is Follower and Start() received command 10
+000543 LOG1 Server 2(term: 0) is Follower and Start() received command 10
+000543 LOG1 Server 3(term: 0) is Follower and Start() received command 10
+000543 LOG1 Server 4(term: 0) is Follower and Start() received command 10
+000543 LOG1 Server 0(term: 0) is Follower and Start() received command 10
+001060 LOG1 Server 1(term: 0) is Follower and Start() received command 10
+001060 LOG1 Server 2(term: 0) is Follower and Start() received command 10
+001060 LOG1 Server 3(term: 0) is Follower and Start() received command 10
+001060 LOG1 Server 4(term: 0) is Follower and Start() received command 10
+001060 LOG1 Server 0(term: 0) is Follower and Start() received command 10
+001563 LOG1 Server 1(term: 0) is Follower and Start() received command 10
+001563 LOG1 Server 2(term: 0) is Follower and Start() received command 10
+001563 LOG1 Server 3(term: 0) is Follower and Start() received command 10
+001563 LOG1 Server 4(term: 0) is Follower and Start() received command 10
+001564 LOG1 Server 0(term: 0) is Follower and Start() received command 10
+002081 LOG1 Server 1(term: 0) is Follower and Start() received command 10
+002082 LOG1 Server 2(term: 0) is Follower and Start() received command 10
+002082 LOG1 Server 3(term: 0) is Follower and Start() received command 10
+002082 LOG1 Server 4(term: 0) is Follower and Start() received command 10
+002082 LOG1 Server 0(term: 0) is Follower and Start() received command 10
+002586 LOG1 Server 1(term: 0) is Follower and Start() received command 10
+002587 LOG1 Server 2(term: 0) is Follower and Start() received command 10
+002587 LOG1 Server 3(term: 0) is Follower and Start() received command 10
+002588 LOG1 Server 4(term: 0) is Follower and Start() received command 10
+002588 LOG1 Server 0(term: 0) is Follower and Start() received command 10
+003108 LOG1 Server 1(term: 0) is Follower and Start() received command 10
+003109 LOG1 Server 2(term: 0) is Follower and Start() received command 10
+003109 LOG1 Server 3(term: 0) is Follower and Start() received command 10
+003109 LOG1 Server 4(term: 0) is Follower and Start() received command 10
+003110 LOG1 Server 0(term: 0) is Follower and Start() received command 10
+003593 VOTE Server 4 started election, current term 1, current role Candidate
+003601 VOTE Server 3 received request vote RequestVoteArgs{Term: 1, CandidateId: 4, LastLogIndex: 0, LastLogTerm: 0}, current electionState: ElectionState: role: Follower, CurrentTerm: 0, VotedFor: -1
+003601 VOTE Server 3's term 0 is lower than server 4's term 1
+003602 VOTE Server 0 received request vote RequestVoteArgs{Term: 1, CandidateId: 4, LastLogIndex: 0, LastLogTerm: 0}, current electionState: ElectionState: role: Follower, CurrentTerm: 0, VotedFor: -1
+003602 VOTE Server 0's term 0 is lower than server 4's term 1
+003601 VOTE Server 2 received request vote RequestVoteArgs{Term: 1, CandidateId: 4, LastLogIndex: 0, LastLogTerm: 0}, current electionState: ElectionState: role: Follower, CurrentTerm: 0, VotedFor: -1
+003603 VOTE Server 2's term 0 is lower than server 4's term 1
+003603 VOTE Server 0's lastLogIndex 0 and lastLogTerm 0 and candidate 4's lastLogIndex 0 and lastLogTerm 0
+003602 VOTE Server 3's lastLogIndex 0 and lastLogTerm 0 and candidate 4's lastLogIndex 0 and lastLogTerm 0
+003604 VOTE Server 1 received request vote RequestVoteArgs{Term: 1, CandidateId: 4, LastLogIndex: 0, LastLogTerm: 0}, current electionState: ElectionState: role: Follower, CurrentTerm: 0, VotedFor: -1
+003604 VOTE Server 2's lastLogIndex 0 and lastLogTerm 0 and candidate 4's lastLogIndex 0 and lastLogTerm 0
+003605 VOTE Server 3 votedFor server 4, electionState: ElectionState: role: Follower, CurrentTerm: 1, VotedFor: 4
+003605 VOTE Server 0 votedFor server 4, electionState: ElectionState: role: Follower, CurrentTerm: 1, VotedFor: 4
+003607 VOTE Server 4 received a vote, current vote 2
+003605 VOTE Server 2 votedFor server 4, electionState: ElectionState: role: Follower, CurrentTerm: 1, VotedFor: 4
+003604 VOTE Server 1's term 0 is lower than server 4's term 1
+003608 VOTE Server 4 received a vote, current vote 3
+003610 LEAD Server 4 has 3 votes with term 1(log size: 1) and is LEADER now!
+003610 VOTE Server 1's lastLogIndex 0 and lastLogTerm 0 and candidate 4's lastLogIndex 0 and lastLogTerm 0
+003612 VOTE Server 1 votedFor server 4, electionState: ElectionState: role: Follower, CurrentTerm: 1, VotedFor: 4
+003612 LOG1 Server 1(term: 1) is Follower and Start() received command 10
+003612 LOG1 Server 2(term: 1) is Follower and Start() received command 10
+003612 LOG1 Server 3(term: 1) is Follower and Start() received command 10
+003614 LOG1 Server 4(term: 1) is Leader and Start() received command 10
+003615 LOG1 Server 4 appended log {1 10} and has log size 2
+003616 INFO Server 4 start heartbeat process
+003616 LEAD Server 4 started log replicator for server 0
+003616 LEAD Server 4(term: 1, electionState: ElectionState: role: Leader, CurrentTerm: 1, VotedFor: 4) has 2 logs with lastLogTerm: 1 [thread: 0]
+003616 LEAD Server 4 has no logs to replicate for server 0
+003617 LEAD Server 4 started log replicator for server 2
+003617 LEAD Server 4(term: 1, electionState: ElectionState: role: Leader, CurrentTerm: 1, VotedFor: 4) has 2 logs with lastLogTerm: 1 [thread: 2]
+003618 LEAD Server 4 has no logs to replicate for server 2
+003617 LEAD Server 4 started log replicator for server 3
+003618 LEAD Server 4(term: 1, electionState: ElectionState: role: Leader, CurrentTerm: 1, VotedFor: 4) has 2 logs with lastLogTerm: 1 [thread: 3]
+003619 LEAD Server 4 has no logs to replicate for server 3
+003618 LEAD Server 4 started log replicator for server 1
+003619 LEAD Server 4(term: 1, electionState: ElectionState: role: Leader, CurrentTerm: 1, VotedFor: 4) has 2 logs with lastLogTerm: 1 [thread: 1]
+003620 LEAD Server 4 has no logs to replicate for server 1
+003623 INFO Server 2(term: 1) with role Follower received heartbeat from leader id 4 with args AppendEntriesArgs{Term: 1, LeaderId: 4, PrevLogIndex: -1, PrevLogTerm: -1, LeaderCommit: 0, Entries: []}
+003624 LOG1 Server 2 log size: 1 lastLogTerm: 0, logs: [{0 0}]
+003624 INFO Server 0(term: 1) with role Follower received heartbeat from leader id 4 with args AppendEntriesArgs{Term: 1, LeaderId: 4, PrevLogIndex: -1, PrevLogTerm: -1, LeaderCommit: 0, Entries: []}
+003623 INFO Server 3(term: 1) with role Follower received heartbeat from leader id 4 with args AppendEntriesArgs{Term: 1, LeaderId: 4, PrevLogIndex: -1, PrevLogTerm: -1, LeaderCommit: 0, Entries: []}
+003625 LOG1 Server 0 log size: 1 lastLogTerm: 0, logs: [{0 0}]
+003625 LOG1 Server 3 log size: 1 lastLogTerm: 0, logs: [{0 0}]
+003627 INFO Server 1(term: 1) with role Follower received heartbeat from leader id 4 with args AppendEntriesArgs{Term: 1, LeaderId: 4, PrevLogIndex: -1, PrevLogTerm: -1, LeaderCommit: 0, Entries: []}
+003627 LOG1 Server 1 log size: 1 lastLogTerm: 0, logs: [{0 0}]
+004138 INFO Server 1(term: 1) with role Follower received heartbeat from leader id 4 with args AppendEntriesArgs{Term: 1, LeaderId: 4, PrevLogIndex: -1, PrevLogTerm: -1, LeaderCommit: 0, Entries: []}
+004139 LOG1 Server 1 log size: 1 lastLogTerm: 0, logs: [{0 0}]
+004139 INFO Server 3(term: 1) with role Follower received heartbeat from leader id 4 with args AppendEntriesArgs{Term: 1, LeaderId: 4, PrevLogIndex: -1, PrevLogTerm: -1, LeaderCommit: 0, Entries: []}
+004139 LOG1 Server 3 log size: 1 lastLogTerm: 0, logs: [{0 0}]
+004143 INFO Server 0(term: 1) with role Follower received heartbeat from leader id 4 with args AppendEntriesArgs{Term: 1, LeaderId: 4, PrevLogIndex: -1, PrevLogTerm: -1, LeaderCommit: 0, Entries: []}
+004143 LOG1 Server 0 log size: 1 lastLogTerm: 0, logs: [{0 0}]
+004146 INFO Server 2(term: 1) with role Follower received heartbeat from leader id 4 with args AppendEntriesArgs{Term: 1, LeaderId: 4, PrevLogIndex: -1, PrevLogTerm: -1, LeaderCommit: 0, Entries: []}
+004147 LOG1 Server 2 log size: 1 lastLogTerm: 0, logs: [{0 0}]
+004630 LEAD Server 4(term: 1, electionState: ElectionState: role: Leader, CurrentTerm: 1, VotedFor: 4) has 2 logs with lastLogTerm: 1 [thread: 0]
+004630 LEAD Server 4 has no logs to replicate for server 0
+004630 LEAD Server 4(term: 1, electionState: ElectionState: role: Leader, CurrentTerm: 1, VotedFor: 4) has 2 logs with lastLogTerm: 1 [thread: 3]
+004631 LEAD Server 4 has no logs to replicate for server 3
+004631 LEAD Server 4(term: 1, electionState: ElectionState: role: Leader, CurrentTerm: 1, VotedFor: 4) has 2 logs with lastLogTerm: 1 [thread: 2]
+004631 LEAD Server 4(term: 1, electionState: ElectionState: role: Leader, CurrentTerm: 1, VotedFor: 4) has 2 logs with lastLogTerm: 1 [thread: 1]
+004632 LEAD Server 4 has no logs to replicate for server 1
+004632 LEAD Server 4 has no logs to replicate for server 2
+004639 INFO Server 0(term: 1) with role Follower received heartbeat from leader id 4 with args AppendEntriesArgs{Term: 1, LeaderId: 4, PrevLogIndex: -1, PrevLogTerm: -1, LeaderCommit: 0, Entries: []}
+004640 LOG1 Server 0 log size: 1 lastLogTerm: 0, logs: [{0 0}]
+004640 INFO Server 1(term: 1) with role Follower received heartbeat from leader id 4 with args AppendEntriesArgs{Term: 1, LeaderId: 4, PrevLogIndex: -1, PrevLogTerm: -1, LeaderCommit: 0, Entries: []}
+004640 LOG1 Server 1 log size: 1 lastLogTerm: 0, logs: [{0 0}]
+004640 INFO Server 2(term: 1) with role Follower received heartbeat from leader id 4 with args AppendEntriesArgs{Term: 1, LeaderId: 4, PrevLogIndex: -1, PrevLogTerm: -1, LeaderCommit: 0, Entries: []}
+004641 LOG1 Server 2 log size: 1 lastLogTerm: 0, logs: [{0 0}]
+004642 INFO Server 3(term: 1) with role Follower received heartbeat from leader id 4 with args AppendEntriesArgs{Term: 1, LeaderId: 4, PrevLogIndex: -1, PrevLogTerm: -1, LeaderCommit: 0, Entries: []}
+004643 LOG1 Server 3 log size: 1 lastLogTerm: 0, logs: [{0 0}]
+005142 INFO Server 1(term: 1) with role Follower received heartbeat from leader id 4 with args AppendEntriesArgs{Term: 1, LeaderId: 4, PrevLogIndex: -1, PrevLogTerm: -1, LeaderCommit: 0, Entries: []}
+005143 LOG1 Server 1 log size: 1 lastLogTerm: 0, logs: [{0 0}]
+005143 INFO Server 0(term: 1) with role Follower received heartbeat from leader id 4 with args AppendEntriesArgs{Term: 1, LeaderId: 4, PrevLogIndex: -1, PrevLogTerm: -1, LeaderCommit: 0, Entries: []}
+005143 LOG1 Server 0 log size: 1 lastLogTerm: 0, logs: [{0 0}]
+005144 INFO Server 2(term: 1) with role Follower received heartbeat from leader id 4 with args AppendEntriesArgs{Term: 1, LeaderId: 4, PrevLogIndex: -1, PrevLogTerm: -1, LeaderCommit: 0, Entries: []}
+005144 LOG1 Server 2 log size: 1 lastLogTerm: 0, logs: [{0 0}]
+005147 INFO Server 3(term: 1) with role Follower received heartbeat from leader id 4 with args AppendEntriesArgs{Term: 1, LeaderId: 4, PrevLogIndex: -1, PrevLogTerm: -1, LeaderCommit: 0, Entries: []}
+005147 LOG1 Server 3 log size: 1 lastLogTerm: 0, logs: [{0 0}]
+005635 LEAD Server 4(term: 1, electionState: ElectionState: role: Leader, CurrentTerm: 1, VotedFor: 4) has 2 logs with lastLogTerm: 1 [thread: 2]
+005636 LEAD Server 4 has no logs to replicate for server 2
+005639 LEAD Server 4(term: 1, electionState: ElectionState: role: Leader, CurrentTerm: 1, VotedFor: 4) has 2 logs with lastLogTerm: 1 [thread: 3]
+005640 LEAD Server 4 has no logs to replicate for server 3
+005645 LEAD Server 4(term: 1, electionState: ElectionState: role: Leader, CurrentTerm: 1, VotedFor: 4) has 2 logs with lastLogTerm: 1 [thread: 0]
+005646 LEAD Server 4 has no logs to replicate for server 0
+005646 INFO Server 1(term: 1) with role Follower received heartbeat from leader id 4 with args AppendEntriesArgs{Term: 1, LeaderId: 4, PrevLogIndex: -1, PrevLogTerm: -1, LeaderCommit: 0, Entries: []}
+005646 LOG1 Server 1 log size: 1 lastLogTerm: 0, logs: [{0 0}]
+005646 LEAD Server 4(term: 1, electionState: ElectionState: role: Leader, CurrentTerm: 1, VotedFor: 4) has 2 logs with lastLogTerm: 1 [thread: 1]
+005647 LEAD Server 4 has no logs to replicate for server 1
+005650 INFO Server 0(term: 1) with role Follower received heartbeat from leader id 4 with args AppendEntriesArgs{Term: 1, LeaderId: 4, PrevLogIndex: -1, PrevLogTerm: -1, LeaderCommit: 0, Entries: []}
+005650 LOG1 Server 0 log size: 1 lastLogTerm: 0, logs: [{0 0}]
+005651 INFO Server 3(term: 1) with role Follower received heartbeat from leader id 4 with args AppendEntriesArgs{Term: 1, LeaderId: 4, PrevLogIndex: -1, PrevLogTerm: -1, LeaderCommit: 0, Entries: []}
+005651 LOG1 Server 3 log size: 1 lastLogTerm: 0, logs: [{0 0}]
+005652 INFO Server 2(term: 1) with role Follower received heartbeat from leader id 4 with args AppendEntriesArgs{Term: 1, LeaderId: 4, PrevLogIndex: -1, PrevLogTerm: -1, LeaderCommit: 0, Entries: []}
+005653 LOG1 Server 2 log size: 1 lastLogTerm: 0, logs: [{0 0}]
+006153 INFO Server 2(term: 1) with role Follower received heartbeat from leader id 4 with args AppendEntriesArgs{Term: 1, LeaderId: 4, PrevLogIndex: -1, PrevLogTerm: -1, LeaderCommit: 0, Entries: []}
+006153 LOG1 Server 2 log size: 1 lastLogTerm: 0, logs: [{0 0}]
+006154 INFO Server 1(term: 1) with role Follower received heartbeat from leader id 4 with args AppendEntriesArgs{Term: 1, LeaderId: 4, PrevLogIndex: -1, PrevLogTerm: -1, LeaderCommit: 0, Entries: []}
+006154 LOG1 Server 1 log size: 1 lastLogTerm: 0, logs: [{0 0}]
+006157 INFO Server 3(term: 1) with role Follower received heartbeat from leader id 4 with args AppendEntriesArgs{Term: 1, LeaderId: 4, PrevLogIndex: -1, PrevLogTerm: -1, LeaderCommit: 0, Entries: []}
+006157 LOG1 Server 3 log size: 1 lastLogTerm: 0, logs: [{0 0}]
+006167 INFO Server 0(term: 1) with role Follower received heartbeat from leader id 4 with args AppendEntriesArgs{Term: 1, LeaderId: 4, PrevLogIndex: -1, PrevLogTerm: -1, LeaderCommit: 0, Entries: []}
+006167 LOG1 Server 0 log size: 1 lastLogTerm: 0, logs: [{0 0}]
+006652 LEAD Server 4(term: 1, electionState: ElectionState: role: Leader, CurrentTerm: 1, VotedFor: 4) has 2 logs with lastLogTerm: 1 [thread: 2]
+006652 LEAD Server 4(term: 1, electionState: ElectionState: role: Leader, CurrentTerm: 1, VotedFor: 4) has 2 logs with lastLogTerm: 1 [thread: 1]
+006653 LEAD Server 4 has no logs to replicate for server 1
+006653 LEAD Server 4(term: 1, electionState: ElectionState: role: Leader, CurrentTerm: 1, VotedFor: 4) has 2 logs with lastLogTerm: 1 [thread: 3]
+006654 LEAD Server 4 has no logs to replicate for server 3
+006654 LEAD Server 4(term: 1, electionState: ElectionState: role: Leader, CurrentTerm: 1, VotedFor: 4) has 2 logs with lastLogTerm: 1 [thread: 0]
+006654 LEAD Server 4 has no logs to replicate for server 0
+006654 LEAD Server 4 has no logs to replicate for server 2
+006656 INFO Server 0(term: 1) with role Follower received heartbeat from leader id 4 with args AppendEntriesArgs{Term: 1, LeaderId: 4, PrevLogIndex: -1, PrevLogTerm: -1, LeaderCommit: 0, Entries: []}
+006656 LOG1 Server 0 log size: 1 lastLogTerm: 0, logs: [{0 0}]
+006657 INFO Server 1(term: 1) with role Follower received heartbeat from leader id 4 with args AppendEntriesArgs{Term: 1, LeaderId: 4, PrevLogIndex: -1, PrevLogTerm: -1, LeaderCommit: 0, Entries: []}
+006657 LOG1 Server 1 log size: 1 lastLogTerm: 0, logs: [{0 0}]
+006658 INFO Server 2(term: 1) with role Follower received heartbeat from leader id 4 with args AppendEntriesArgs{Term: 1, LeaderId: 4, PrevLogIndex: -1, PrevLogTerm: -1, LeaderCommit: 0, Entries: []}
+006658 LOG1 Server 2 log size: 1 lastLogTerm: 0, logs: [{0 0}]
+006660 INFO Server 3(term: 1) with role Follower received heartbeat from leader id 4 with args AppendEntriesArgs{Term: 1, LeaderId: 4, PrevLogIndex: -1, PrevLogTerm: -1, LeaderCommit: 0, Entries: []}
+006660 LOG1 Server 3 log size: 1 lastLogTerm: 0, logs: [{0 0}]
+007177 INFO Server 3(term: 1) with role Follower received heartbeat from leader id 4 with args AppendEntriesArgs{Term: 1, LeaderId: 4, PrevLogIndex: -1, PrevLogTerm: -1, LeaderCommit: 0, Entries: []}
+007178 LOG1 Server 3 log size: 1 lastLogTerm: 0, logs: [{0 0}]
+007181 INFO Server 0(term: 1) with role Follower received heartbeat from leader id 4 with args AppendEntriesArgs{Term: 1, LeaderId: 4, PrevLogIndex: -1, PrevLogTerm: -1, LeaderCommit: 0, Entries: []}
+007182 LOG1 Server 0 log size: 1 lastLogTerm: 0, logs: [{0 0}]
+007182 INFO Server 1(term: 1) with role Follower received heartbeat from leader id 4 with args AppendEntriesArgs{Term: 1, LeaderId: 4, PrevLogIndex: -1, PrevLogTerm: -1, LeaderCommit: 0, Entries: []}
+007182 LOG1 Server 1 log size: 1 lastLogTerm: 0, logs: [{0 0}]
+007185 INFO Server 2(term: 1) with role Follower received heartbeat from leader id 4 with args AppendEntriesArgs{Term: 1, LeaderId: 4, PrevLogIndex: -1, PrevLogTerm: -1, LeaderCommit: 0, Entries: []}
+007185 LOG1 Server 2 log size: 1 lastLogTerm: 0, logs: [{0 0}]
+007661 LEAD Server 4(term: 1, electionState: ElectionState: role: Leader, CurrentTerm: 1, VotedFor: 4) has 2 logs with lastLogTerm: 1 [thread: 3]
+007661 LEAD Server 4 has no logs to replicate for server 3
+007661 LEAD Server 4(term: 1, electionState: ElectionState: role: Leader, CurrentTerm: 1, VotedFor: 4) has 2 logs with lastLogTerm: 1 [thread: 2]
+007662 LEAD Server 4 has no logs to replicate for server 2
+007661 LEAD Server 4(term: 1, electionState: ElectionState: role: Leader, CurrentTerm: 1, VotedFor: 4) has 2 logs with lastLogTerm: 1 [thread: 1]
+007663 LEAD Server 4 has no logs to replicate for server 1
+007662 LEAD Server 4(term: 1, electionState: ElectionState: role: Leader, CurrentTerm: 1, VotedFor: 4) has 2 logs with lastLogTerm: 1 [thread: 0]
+007664 LEAD Server 4 has no logs to replicate for server 0
+007686 INFO Server 3(term: 1) with role Follower received heartbeat from leader id 4 with args AppendEntriesArgs{Term: 1, LeaderId: 4, PrevLogIndex: -1, PrevLogTerm: -1, LeaderCommit: 0, Entries: []}
+007686 LOG1 Server 3 log size: 1 lastLogTerm: 0, logs: [{0 0}]
+007690 INFO Server 2(term: 1) with role Follower received heartbeat from leader id 4 with args AppendEntriesArgs{Term: 1, LeaderId: 4, PrevLogIndex: -1, PrevLogTerm: -1, LeaderCommit: 0, Entries: []}
+007691 LOG1 Server 2 log size: 1 lastLogTerm: 0, logs: [{0 0}]
+007692 INFO Server 1(term: 1) with role Follower received heartbeat from leader id 4 with args AppendEntriesArgs{Term: 1, LeaderId: 4, PrevLogIndex: -1, PrevLogTerm: -1, LeaderCommit: 0, Entries: []}
+007694 LOG1 Server 1 log size: 1 lastLogTerm: 0, logs: [{0 0}]
+007693 INFO Server 0(term: 1) with role Follower received heartbeat from leader id 4 with args AppendEntriesArgs{Term: 1, LeaderId: 4, PrevLogIndex: -1, PrevLogTerm: -1, LeaderCommit: 0, Entries: []}
+007696 LOG1 Server 0 log size: 1 lastLogTerm: 0, logs: [{0 0}]
+008190 INFO Server 0(term: 1) with role Follower received heartbeat from leader id 4 with args AppendEntriesArgs{Term: 1, LeaderId: 4, PrevLogIndex: -1, PrevLogTerm: -1, LeaderCommit: 0, Entries: []}
+008191 LOG1 Server 0 log size: 1 lastLogTerm: 0, logs: [{0 0}]
+008192 INFO Server 2(term: 1) with role Follower received heartbeat from leader id 4 with args AppendEntriesArgs{Term: 1, LeaderId: 4, PrevLogIndex: -1, PrevLogTerm: -1, LeaderCommit: 0, Entries: []}
+008192 LOG1 Server 2 log size: 1 lastLogTerm: 0, logs: [{0 0}]
+008194 INFO Server 3(term: 1) with role Follower received heartbeat from leader id 4 with args AppendEntriesArgs{Term: 1, LeaderId: 4, PrevLogIndex: -1, PrevLogTerm: -1, LeaderCommit: 0, Entries: []}
+008195 LOG1 Server 3 log size: 1 lastLogTerm: 0, logs: [{0 0}]
+008196 INFO Server 1(term: 1) with role Follower received heartbeat from leader id 4 with args AppendEntriesArgs{Term: 1, LeaderId: 4, PrevLogIndex: -1, PrevLogTerm: -1, LeaderCommit: 0, Entries: []}
+008197 LOG1 Server 1 log size: 1 lastLogTerm: 0, logs: [{0 0}]
+008666 LEAD Server 4(term: 1, electionState: ElectionState: role: Leader, CurrentTerm: 1, VotedFor: 4) has 2 logs with lastLogTerm: 1 [thread: 3]
+008667 LEAD Server 4(term: 1, electionState: ElectionState: role: Leader, CurrentTerm: 1, VotedFor: 4) has 2 logs with lastLogTerm: 1 [thread: 0]
+008668 LEAD Server 4(term: 1, electionState: ElectionState: role: Leader, CurrentTerm: 1, VotedFor: 4) has 2 logs with lastLogTerm: 1 [thread: 1]
+008668 LEAD Server 4 has no logs to replicate for server 1
+008668 LEAD Server 4 has no logs to replicate for server 0
+008668 LEAD Server 4(term: 1, electionState: ElectionState: role: Leader, CurrentTerm: 1, VotedFor: 4) has 2 logs with lastLogTerm: 1 [thread: 2]
+008668 LEAD Server 4 has no logs to replicate for server 2
+008667 LEAD Server 4 has no logs to replicate for server 3
+008702 INFO Server 1(term: 1) with role Follower received heartbeat from leader id 4 with args AppendEntriesArgs{Term: 1, LeaderId: 4, PrevLogIndex: -1, PrevLogTerm: -1, LeaderCommit: 0, Entries: []}
+008702 INFO Server 3(term: 1) with role Follower received heartbeat from leader id 4 with args AppendEntriesArgs{Term: 1, LeaderId: 4, PrevLogIndex: -1, PrevLogTerm: -1, LeaderCommit: 0, Entries: []}
+008703 LOG1 Server 3 log size: 1 lastLogTerm: 0, logs: [{0 0}]
+008702 INFO Server 2(term: 1) with role Follower received heartbeat from leader id 4 with args AppendEntriesArgs{Term: 1, LeaderId: 4, PrevLogIndex: -1, PrevLogTerm: -1, LeaderCommit: 0, Entries: []}
+008702 LOG1 Server 1 log size: 1 lastLogTerm: 0, logs: [{0 0}]
+008703 LOG1 Server 2 log size: 1 lastLogTerm: 0, logs: [{0 0}]
+008709 INFO Server 0(term: 1) with role Follower received heartbeat from leader id 4 with args AppendEntriesArgs{Term: 1, LeaderId: 4, PrevLogIndex: -1, PrevLogTerm: -1, LeaderCommit: 0, Entries: []}
+008709 LOG1 Server 0 log size: 1 lastLogTerm: 0, logs: [{0 0}]
+009213 INFO Server 0(term: 1) with role Follower received heartbeat from leader id 4 with args AppendEntriesArgs{Term: 1, LeaderId: 4, PrevLogIndex: -1, PrevLogTerm: -1, LeaderCommit: 0, Entries: []}
+009214 LOG1 Server 0 log size: 1 lastLogTerm: 0, logs: [{0 0}]
+009217 INFO Server 2(term: 1) with role Follower received heartbeat from leader id 4 with args AppendEntriesArgs{Term: 1, LeaderId: 4, PrevLogIndex: -1, PrevLogTerm: -1, LeaderCommit: 0, Entries: []}
+009218 LOG1 Server 2 log size: 1 lastLogTerm: 0, logs: [{0 0}]
+009221 INFO Server 1(term: 1) with role Follower received heartbeat from leader id 4 with args AppendEntriesArgs{Term: 1, LeaderId: 4, PrevLogIndex: -1, PrevLogTerm: -1, LeaderCommit: 0, Entries: []}
+009221 LOG1 Server 1 log size: 1 lastLogTerm: 0, logs: [{0 0}]
+009224 INFO Server 3(term: 1) with role Follower received heartbeat from leader id 4 with args AppendEntriesArgs{Term: 1, LeaderId: 4, PrevLogIndex: -1, PrevLogTerm: -1, LeaderCommit: 0, Entries: []}
+009224 LOG1 Server 3 log size: 1 lastLogTerm: 0, logs: [{0 0}]
+009680 LEAD Server 4(term: 1, electionState: ElectionState: role: Leader, CurrentTerm: 1, VotedFor: 4) has 2 logs with lastLogTerm: 1 [thread: 2]
+009691 LEAD Server 4 has no logs to replicate for server 2
+009685 LEAD Server 4(term: 1, electionState: ElectionState: role: Leader, CurrentTerm: 1, VotedFor: 4) has 2 logs with lastLogTerm: 1 [thread: 0]
+009692 LEAD Server 4 has no logs to replicate for server 0
+009686 LEAD Server 4(term: 1, electionState: ElectionState: role: Leader, CurrentTerm: 1, VotedFor: 4) has 2 logs with lastLogTerm: 1 [thread: 1]
+009692 LEAD Server 4 has no logs to replicate for server 1
+009687 LEAD Server 4(term: 1, electionState: ElectionState: role: Leader, CurrentTerm: 1, VotedFor: 4) has 2 logs with lastLogTerm: 1 [thread: 3]
+009692 LEAD Server 4 has no logs to replicate for server 3
+009715 INFO Server 3(term: 1) with role Follower received heartbeat from leader id 4 with args AppendEntriesArgs{Term: 1, LeaderId: 4, PrevLogIndex: -1, PrevLogTerm: -1, LeaderCommit: 0, Entries: []}
+009715 INFO Server 2(term: 1) with role Follower received heartbeat from leader id 4 with args AppendEntriesArgs{Term: 1, LeaderId: 4, PrevLogIndex: -1, PrevLogTerm: -1, LeaderCommit: 0, Entries: []}
+009716 LOG1 Server 2 log size: 1 lastLogTerm: 0, logs: [{0 0}]
+009716 INFO Server 0(term: 1) with role Follower received heartbeat from leader id 4 with args AppendEntriesArgs{Term: 1, LeaderId: 4, PrevLogIndex: -1, PrevLogTerm: -1, LeaderCommit: 0, Entries: []}
+009715 LOG1 Server 3 log size: 1 lastLogTerm: 0, logs: [{0 0}]
+009716 LOG1 Server 0 log size: 1 lastLogTerm: 0, logs: [{0 0}]
+009720 INFO Server 1(term: 1) with role Follower received heartbeat from leader id 4 with args AppendEntriesArgs{Term: 1, LeaderId: 4, PrevLogIndex: -1, PrevLogTerm: -1, LeaderCommit: 0, Entries: []}
+009720 LOG1 Server 1 log size: 1 lastLogTerm: 0, logs: [{0 0}]
+010225 INFO Server 1(term: 1) with role Follower received heartbeat from leader id 4 with args AppendEntriesArgs{Term: 1, LeaderId: 4, PrevLogIndex: -1, PrevLogTerm: -1, LeaderCommit: 0, Entries: []}
+010225 LOG1 Server 1 log size: 1 lastLogTerm: 0, logs: [{0 0}]
+010225 INFO Server 2(term: 1) with role Follower received heartbeat from leader id 4 with args AppendEntriesArgs{Term: 1, LeaderId: 4, PrevLogIndex: -1, PrevLogTerm: -1, LeaderCommit: 0, Entries: []}
+010226 LOG1 Server 2 log size: 1 lastLogTerm: 0, logs: [{0 0}]
+010227 INFO Server 0(term: 1) with role Follower received heartbeat from leader id 4 with args AppendEntriesArgs{Term: 1, LeaderId: 4, PrevLogIndex: -1, PrevLogTerm: -1, LeaderCommit: 0, Entries: []}
+010227 LOG1 Server 0 log size: 1 lastLogTerm: 0, logs: [{0 0}]
+010226 INFO Server 3(term: 1) with role Follower received heartbeat from leader id 4 with args AppendEntriesArgs{Term: 1, LeaderId: 4, PrevLogIndex: -1, PrevLogTerm: -1, LeaderCommit: 0, Entries: []}
+010228 LOG1 Server 3 log size: 1 lastLogTerm: 0, logs: [{0 0}]
+010696 LEAD Server 4(term: 1, electionState: ElectionState: role: Leader, CurrentTerm: 1, VotedFor: 4) has 2 logs with lastLogTerm: 1 [thread: 3]
+010697 LEAD Server 4 has no logs to replicate for server 3
+010697 LEAD Server 4(term: 1, electionState: ElectionState: role: Leader, CurrentTerm: 1, VotedFor: 4) has 2 logs with lastLogTerm: 1 [thread: 1]
+010697 LEAD Server 4 has no logs to replicate for server 1
+010697 LEAD Server 4(term: 1, electionState: ElectionState: role: Leader, CurrentTerm: 1, VotedFor: 4) has 2 logs with lastLogTerm: 1 [thread: 2]
+010698 LEAD Server 4 has no logs to replicate for server 2
+010698 LEAD Server 4(term: 1, electionState: ElectionState: role: Leader, CurrentTerm: 1, VotedFor: 4) has 2 logs with lastLogTerm: 1 [thread: 0]
+010698 LEAD Server 4 has no logs to replicate for server 0
+010733 INFO Server 2(term: 1) with role Follower received heartbeat from leader id 4 with args AppendEntriesArgs{Term: 1, LeaderId: 4, PrevLogIndex: -1, PrevLogTerm: -1, LeaderCommit: 0, Entries: []}
+010734 INFO Server 3(term: 1) with role Follower received heartbeat from leader id 4 with args AppendEntriesArgs{Term: 1, LeaderId: 4, PrevLogIndex: -1, PrevLogTerm: -1, LeaderCommit: 0, Entries: []}
+010734 LOG1 Server 2 log size: 1 lastLogTerm: 0, logs: [{0 0}]
+010735 LOG1 Server 3 log size: 1 lastLogTerm: 0, logs: [{0 0}]
+010733 INFO Server 1(term: 1) with role Follower received heartbeat from leader id 4 with args AppendEntriesArgs{Term: 1, LeaderId: 4, PrevLogIndex: -1, PrevLogTerm: -1, LeaderCommit: 0, Entries: []}
+010736 LOG1 Server 1 log size: 1 lastLogTerm: 0, logs: [{0 0}]
+010751 INFO Server 0(term: 1) with role Follower received heartbeat from leader id 4 with args AppendEntriesArgs{Term: 1, LeaderId: 4, PrevLogIndex: -1, PrevLogTerm: -1, LeaderCommit: 0, Entries: []}
+010751 LOG1 Server 0 log size: 1 lastLogTerm: 0, logs: [{0 0}]
+011251 INFO Server 2(term: 1) with role Follower received heartbeat from leader id 4 with args AppendEntriesArgs{Term: 1, LeaderId: 4, PrevLogIndex: -1, PrevLogTerm: -1, LeaderCommit: 0, Entries: []}
+011251 INFO Server 3(term: 1) with role Follower received heartbeat from leader id 4 with args AppendEntriesArgs{Term: 1, LeaderId: 4, PrevLogIndex: -1, PrevLogTerm: -1, LeaderCommit: 0, Entries: []}
+011251 LOG1 Server 2 log size: 1 lastLogTerm: 0, logs: [{0 0}]
+011251 LOG1 Server 3 log size: 1 lastLogTerm: 0, logs: [{0 0}]
+011254 INFO Server 1(term: 1) with role Follower received heartbeat from leader id 4 with args AppendEntriesArgs{Term: 1, LeaderId: 4, PrevLogIndex: -1, PrevLogTerm: -1, LeaderCommit: 0, Entries: []}
+011255 LOG1 Server 1 log size: 1 lastLogTerm: 0, logs: [{0 0}]
+011255 INFO Server 0(term: 1) with role Follower received heartbeat from leader id 4 with args AppendEntriesArgs{Term: 1, LeaderId: 4, PrevLogIndex: -1, PrevLogTerm: -1, LeaderCommit: 0, Entries: []}
+011256 LOG1 Server 0 log size: 1 lastLogTerm: 0, logs: [{0 0}]
+011713 LEAD Server 4(term: 1, electionState: ElectionState: role: Leader, CurrentTerm: 1, VotedFor: 4) has 2 logs with lastLogTerm: 1 [thread: 2]
+011714 LEAD Server 4 has no logs to replicate for server 2
+011714 LEAD Server 4(term: 1, electionState: ElectionState: role: Leader, CurrentTerm: 1, VotedFor: 4) has 2 logs with lastLogTerm: 1 [thread: 1]
+011714 LEAD Server 4 has no logs to replicate for server 1
+011717 LEAD Server 4(term: 1, electionState: ElectionState: role: Leader, CurrentTerm: 1, VotedFor: 4) has 2 logs with lastLogTerm: 1 [thread: 0]
+011717 LEAD Server 4 has no logs to replicate for server 0
+011720 LEAD Server 4(term: 1, electionState: ElectionState: role: Leader, CurrentTerm: 1, VotedFor: 4) has 2 logs with lastLogTerm: 1 [thread: 3]
+011720 LEAD Server 4 has no logs to replicate for server 3
+011758 INFO Server 1(term: 1) with role Follower received heartbeat from leader id 4 with args AppendEntriesArgs{Term: 1, LeaderId: 4, PrevLogIndex: -1, PrevLogTerm: -1, LeaderCommit: 0, Entries: []}
+011758 LOG1 Server 1 log size: 1 lastLogTerm: 0, logs: [{0 0}]
+011759 INFO Server 2(term: 1) with role Follower received heartbeat from leader id 4 with args AppendEntriesArgs{Term: 1, LeaderId: 4, PrevLogIndex: -1, PrevLogTerm: -1, LeaderCommit: 0, Entries: []}
+011760 LOG1 Server 2 log size: 1 lastLogTerm: 0, logs: [{0 0}]
+011762 INFO Server 0(term: 1) with role Follower received heartbeat from leader id 4 with args AppendEntriesArgs{Term: 1, LeaderId: 4, PrevLogIndex: -1, PrevLogTerm: -1, LeaderCommit: 0, Entries: []}
+011762 LOG1 Server 0 log size: 1 lastLogTerm: 0, logs: [{0 0}]
+011767 INFO Server 3(term: 1) with role Follower received heartbeat from leader id 4 with args AppendEntriesArgs{Term: 1, LeaderId: 4, PrevLogIndex: -1, PrevLogTerm: -1, LeaderCommit: 0, Entries: []}
+011767 LOG1 Server 3 log size: 1 lastLogTerm: 0, logs: [{0 0}]
+012266 INFO Server 2(term: 1) with role Follower received heartbeat from leader id 4 with args AppendEntriesArgs{Term: 1, LeaderId: 4, PrevLogIndex: -1, PrevLogTerm: -1, LeaderCommit: 0, Entries: []}
+012266 INFO Server 3(term: 1) with role Follower received heartbeat from leader id 4 with args AppendEntriesArgs{Term: 1, LeaderId: 4, PrevLogIndex: -1, PrevLogTerm: -1, LeaderCommit: 0, Entries: []}
+012266 LOG1 Server 2 log size: 1 lastLogTerm: 0, logs: [{0 0}]
+012267 LOG1 Server 3 log size: 1 lastLogTerm: 0, logs: [{0 0}]
+012268 INFO Server 1(term: 1) with role Follower received heartbeat from leader id 4 with args AppendEntriesArgs{Term: 1, LeaderId: 4, PrevLogIndex: -1, PrevLogTerm: -1, LeaderCommit: 0, Entries: []}
+012268 LOG1 Server 1 log size: 1 lastLogTerm: 0, logs: [{0 0}]
+012269 INFO Server 0(term: 1) with role Follower received heartbeat from leader id 4 with args AppendEntriesArgs{Term: 1, LeaderId: 4, PrevLogIndex: -1, PrevLogTerm: -1, LeaderCommit: 0, Entries: []}
+012269 LOG1 Server 0 log size: 1 lastLogTerm: 0, logs: [{0 0}]
+012723 LEAD Server 4(term: 1, electionState: ElectionState: role: Leader, CurrentTerm: 1, VotedFor: 4) has 2 logs with lastLogTerm: 1 [thread: 3]
+012724 LEAD Server 4(term: 1, electionState: ElectionState: role: Leader, CurrentTerm: 1, VotedFor: 4) has 2 logs with lastLogTerm: 1 [thread: 0]
+012724 LEAD Server 4 has no logs to replicate for server 3
+012724 LEAD Server 4(term: 1, electionState: ElectionState: role: Leader, CurrentTerm: 1, VotedFor: 4) has 2 logs with lastLogTerm: 1 [thread: 2]
+012724 LEAD Server 4(term: 1, electionState: ElectionState: role: Leader, CurrentTerm: 1, VotedFor: 4) has 2 logs with lastLogTerm: 1 [thread: 1]
+012725 LEAD Server 4 has no logs to replicate for server 2
+012724 LEAD Server 4 has no logs to replicate for server 0
+012725 LEAD Server 4 has no logs to replicate for server 1
+012779 INFO Server 3(term: 1) with role Follower received heartbeat from leader id 4 with args AppendEntriesArgs{Term: 1, LeaderId: 4, PrevLogIndex: -1, PrevLogTerm: -1, LeaderCommit: 0, Entries: []}
+012779 LOG1 Server 3 log size: 1 lastLogTerm: 0, logs: [{0 0}]
+012780 INFO Server 0(term: 1) with role Follower received heartbeat from leader id 4 with args AppendEntriesArgs{Term: 1, LeaderId: 4, PrevLogIndex: -1, PrevLogTerm: -1, LeaderCommit: 0, Entries: []}
+012780 LOG1 Server 0 log size: 1 lastLogTerm: 0, logs: [{0 0}]
+012782 INFO Server 2(term: 1) with role Follower received heartbeat from leader id 4 with args AppendEntriesArgs{Term: 1, LeaderId: 4, PrevLogIndex: -1, PrevLogTerm: -1, LeaderCommit: 0, Entries: []}
+012783 LOG1 Server 2 log size: 1 lastLogTerm: 0, logs: [{0 0}]
+012783 INFO Server 1(term: 1) with role Follower received heartbeat from leader id 4 with args AppendEntriesArgs{Term: 1, LeaderId: 4, PrevLogIndex: -1, PrevLogTerm: -1, LeaderCommit: 0, Entries: []}
+012787 LOG1 Server 1 log size: 1 lastLogTerm: 0, logs: [{0 0}]
+013291 INFO Server 1(term: 1) with role Follower received heartbeat from leader id 4 with args AppendEntriesArgs{Term: 1, LeaderId: 4, PrevLogIndex: -1, PrevLogTerm: -1, LeaderCommit: 0, Entries: []}
+013292 LOG1 Server 1 log size: 1 lastLogTerm: 0, logs: [{0 0}]
+013292 INFO Server 0(term: 1) with role Follower received heartbeat from leader id 4 with args AppendEntriesArgs{Term: 1, LeaderId: 4, PrevLogIndex: -1, PrevLogTerm: -1, LeaderCommit: 0, Entries: []}
+013292 LOG1 Server 0 log size: 1 lastLogTerm: 0, logs: [{0 0}]
+013294 INFO Server 3(term: 1) with role Follower received heartbeat from leader id 4 with args AppendEntriesArgs{Term: 1, LeaderId: 4, PrevLogIndex: -1, PrevLogTerm: -1, LeaderCommit: 0, Entries: []}
+013295 LOG1 Server 3 log size: 1 lastLogTerm: 0, logs: [{0 0}]
+013296 INFO Server 2(term: 1) with role Follower received heartbeat from leader id 4 with args AppendEntriesArgs{Term: 1, LeaderId: 4, PrevLogIndex: -1, PrevLogTerm: -1, LeaderCommit: 0, Entries: []}
+013296 LOG1 Server 2 log size: 1 lastLogTerm: 0, logs: [{0 0}]
+013732 LEAD Server 4(term: 1, electionState: ElectionState: role: Leader, CurrentTerm: 1, VotedFor: 4) has 2 logs with lastLogTerm: 1 [thread: 2]
+013732 LEAD Server 4(term: 1, electionState: ElectionState: role: Leader, CurrentTerm: 1, VotedFor: 4) has 2 logs with lastLogTerm: 1 [thread: 0]
+013732 LEAD Server 4(term: 1, electionState: ElectionState: role: Leader, CurrentTerm: 1, VotedFor: 4) has 2 logs with lastLogTerm: 1 [thread: 1]
+013733 LEAD Server 4 has no logs to replicate for server 1
+013732 LEAD Server 4 has no logs to replicate for server 2
+013732 LEAD Server 4 has no logs to replicate for server 0
+013732 LEAD Server 4(term: 1, electionState: ElectionState: role: Leader, CurrentTerm: 1, VotedFor: 4) has 2 logs with lastLogTerm: 1 [thread: 3]
+013733 LEAD Server 4 has no logs to replicate for server 3
+013801 INFO Server 2(term: 1) with role Follower received heartbeat from leader id 4 with args AppendEntriesArgs{Term: 1, LeaderId: 4, PrevLogIndex: -1, PrevLogTerm: -1, LeaderCommit: 0, Entries: []}
+013801 INFO Server 1(term: 1) with role Follower received heartbeat from leader id 4 with args AppendEntriesArgs{Term: 1, LeaderId: 4, PrevLogIndex: -1, PrevLogTerm: -1, LeaderCommit: 0, Entries: []}
+013802 LOG1 Server 2 log size: 1 lastLogTerm: 0, logs: [{0 0}]
+013801 INFO Server 0(term: 1) with role Follower received heartbeat from leader id 4 with args AppendEntriesArgs{Term: 1, LeaderId: 4, PrevLogIndex: -1, PrevLogTerm: -1, LeaderCommit: 0, Entries: []}
+013802 LOG1 Server 0 log size: 1 lastLogTerm: 0, logs: [{0 0}]
+013802 LOG1 Server 1 log size: 1 lastLogTerm: 0, logs: [{0 0}]
+013802 INFO Server 3(term: 1) with role Follower received heartbeat from leader id 4 with args AppendEntriesArgs{Term: 1, LeaderId: 4, PrevLogIndex: -1, PrevLogTerm: -1, LeaderCommit: 0, Entries: []}
+013803 LOG1 Server 3 log size: 1 lastLogTerm: 0, logs: [{0 0}]
+014304 INFO Server 0(term: 1) with role Follower received heartbeat from leader id 4 with args AppendEntriesArgs{Term: 1, LeaderId: 4, PrevLogIndex: -1, PrevLogTerm: -1, LeaderCommit: 0, Entries: []}
+014304 LOG1 Server 0 log size: 1 lastLogTerm: 0, logs: [{0 0}]
+014305 INFO Server 1(term: 1) with role Follower received heartbeat from leader id 4 with args AppendEntriesArgs{Term: 1, LeaderId: 4, PrevLogIndex: -1, PrevLogTerm: -1, LeaderCommit: 0, Entries: []}
+014306 LOG1 Server 1 log size: 1 lastLogTerm: 0, logs: [{0 0}]
+014308 INFO Server 2(term: 1) with role Follower received heartbeat from leader id 4 with args AppendEntriesArgs{Term: 1, LeaderId: 4, PrevLogIndex: -1, PrevLogTerm: -1, LeaderCommit: 0, Entries: []}
+014308 LOG1 Server 2 log size: 1 lastLogTerm: 0, logs: [{0 0}]
+014308 INFO Server 3(term: 1) with role Follower received heartbeat from leader id 4 with args AppendEntriesArgs{Term: 1, LeaderId: 4, PrevLogIndex: -1, PrevLogTerm: -1, LeaderCommit: 0, Entries: []}
+014309 LOG1 Server 3 log size: 1 lastLogTerm: 0, logs: [{0 0}]
+014888 LEAD Server 4(term: 1, electionState: ElectionState: role: Leader, CurrentTerm: 1, VotedFor: 4) has 2 logs with lastLogTerm: 1 [thread: 2]
+014889 LEAD Server 4 has no logs to replicate for server 2
+014889 LEAD Server 4(term: 1, electionState: ElectionState: role: Leader, CurrentTerm: 1, VotedFor: 4) has 2 logs with lastLogTerm: 1 [thread: 0]
+014889 LEAD Server 4 has no logs to replicate for server 0
+014889 LEAD Server 4(term: 1, electionState: ElectionState: role: Leader, CurrentTerm: 1, VotedFor: 4) has 2 logs with lastLogTerm: 1 [thread: 1]
+014889 LEAD Server 4 has no logs to replicate for server 1
+014889 LEAD Server 4(term: 1, electionState: ElectionState: role: Leader, CurrentTerm: 1, VotedFor: 4) has 2 logs with lastLogTerm: 1 [thread: 3]
+014890 LEAD Server 4 has no logs to replicate for server 3
+014893 INFO Server 3(term: 1) with role Follower received heartbeat from leader id 4 with args AppendEntriesArgs{Term: 1, LeaderId: 4, PrevLogIndex: -1, PrevLogTerm: -1, LeaderCommit: 0, Entries: []}
+014893 LOG1 Server 3 log size: 1 lastLogTerm: 0, logs: [{0 0}]
+014896 INFO Server 1(term: 1) with role Follower received heartbeat from leader id 4 with args AppendEntriesArgs{Term: 1, LeaderId: 4, PrevLogIndex: -1, PrevLogTerm: -1, LeaderCommit: 0, Entries: []}
+014896 LOG1 Server 1 log size: 1 lastLogTerm: 0, logs: [{0 0}]
+014899 INFO Server 2(term: 1) with role Follower received heartbeat from leader id 4 with args AppendEntriesArgs{Term: 1, LeaderId: 4, PrevLogIndex: -1, PrevLogTerm: -1, LeaderCommit: 0, Entries: []}
+014899 LOG1 Server 2 log size: 1 lastLogTerm: 0, logs: [{0 0}]
+015034 INFO Server 0(term: 1) with role Follower received heartbeat from leader id 4 with args AppendEntriesArgs{Term: 1, LeaderId: 4, PrevLogIndex: -1, PrevLogTerm: -1, LeaderCommit: 0, Entries: []}
+015035 LOG1 Server 0 log size: 1 lastLogTerm: 0, logs: [{0 0}]
+015396 INFO Server 3(term: 1) with role Follower received heartbeat from leader id 4 with args AppendEntriesArgs{Term: 1, LeaderId: 4, PrevLogIndex: -1, PrevLogTerm: -1, LeaderCommit: 0, Entries: []}
+015397 LOG1 Server 3 log size: 1 lastLogTerm: 0, logs: [{0 0}]
+015399 INFO Server 2(term: 1) with role Follower received heartbeat from leader id 4 with args AppendEntriesArgs{Term: 1, LeaderId: 4, PrevLogIndex: -1, PrevLogTerm: -1, LeaderCommit: 0, Entries: []}
+015399 LOG1 Server 2 log size: 1 lastLogTerm: 0, logs: [{0 0}]
+015400 INFO Server 1(term: 1) with role Follower received heartbeat from leader id 4 with args AppendEntriesArgs{Term: 1, LeaderId: 4, PrevLogIndex: -1, PrevLogTerm: -1, LeaderCommit: 0, Entries: []}
+015400 LOG1 Server 1 log size: 1 lastLogTerm: 0, logs: [{0 0}]
+015412 INFO Server 0(term: 1) with role Follower received heartbeat from leader id 4 with args AppendEntriesArgs{Term: 1, LeaderId: 4, PrevLogIndex: -1, PrevLogTerm: -1, LeaderCommit: 0, Entries: []}
+015413 LOG1 Server 0 log size: 1 lastLogTerm: 0, logs: [{0 0}]
+015896 LEAD Server 4(term: 1, electionState: ElectionState: role: Leader, CurrentTerm: 1, VotedFor: 4) has 2 logs with lastLogTerm: 1 [thread: 2]
+015897 LEAD Server 4 has no logs to replicate for server 2
+015897 LEAD Server 4(term: 1, electionState: ElectionState: role: Leader, CurrentTerm: 1, VotedFor: 4) has 2 logs with lastLogTerm: 1 [thread: 0]
+015897 LEAD Server 4 has no logs to replicate for server 0
+015897 LEAD Server 4(term: 1, electionState: ElectionState: role: Leader, CurrentTerm: 1, VotedFor: 4) has 2 logs with lastLogTerm: 1 [thread: 3]
+015897 LEAD Server 4 has no logs to replicate for server 3
+015899 LEAD Server 4(term: 1, electionState: ElectionState: role: Leader, CurrentTerm: 1, VotedFor: 4) has 2 logs with lastLogTerm: 1 [thread: 1]
+015900 LEAD Server 4 has no logs to replicate for server 1
+015901 INFO Server 3(term: 1) with role Follower received heartbeat from leader id 4 with args AppendEntriesArgs{Term: 1, LeaderId: 4, PrevLogIndex: -1, PrevLogTerm: -1, LeaderCommit: 0, Entries: []}
+015900 INFO Server 1(term: 1) with role Follower received heartbeat from leader id 4 with args AppendEntriesArgs{Term: 1, LeaderId: 4, PrevLogIndex: -1, PrevLogTerm: -1, LeaderCommit: 0, Entries: []}
+015901 LOG1 Server 3 log size: 1 lastLogTerm: 0, logs: [{0 0}]
+015901 LOG1 Server 1 log size: 1 lastLogTerm: 0, logs: [{0 0}]
+015905 INFO Server 2(term: 1) with role Follower received heartbeat from leader id 4 with args AppendEntriesArgs{Term: 1, LeaderId: 4, PrevLogIndex: -1, PrevLogTerm: -1, LeaderCommit: 0, Entries: []}
+015905 LOG1 Server 2 log size: 1 lastLogTerm: 0, logs: [{0 0}]
+015905 INFO Server 0(term: 1) with role Follower received heartbeat from leader id 4 with args AppendEntriesArgs{Term: 1, LeaderId: 4, PrevLogIndex: -1, PrevLogTerm: -1, LeaderCommit: 0, Entries: []}
+015906 LOG1 Server 0 log size: 1 lastLogTerm: 0, logs: [{0 0}]
+016418 INFO Server 0(term: 1) with role Follower received heartbeat from leader id 4 with args AppendEntriesArgs{Term: 1, LeaderId: 4, PrevLogIndex: -1, PrevLogTerm: -1, LeaderCommit: 0, Entries: []}
+016418 LOG1 Server 0 log size: 1 lastLogTerm: 0, logs: [{0 0}]
+016421 INFO Server 2(term: 1) with role Follower received heartbeat from leader id 4 with args AppendEntriesArgs{Term: 1, LeaderId: 4, PrevLogIndex: -1, PrevLogTerm: -1, LeaderCommit: 0, Entries: []}
+016421 LOG1 Server 2 log size: 1 lastLogTerm: 0, logs: [{0 0}]
+016423 INFO Server 3(term: 1) with role Follower received heartbeat from leader id 4 with args AppendEntriesArgs{Term: 1, LeaderId: 4, PrevLogIndex: -1, PrevLogTerm: -1, LeaderCommit: 0, Entries: []}
+016424 LOG1 Server 3 log size: 1 lastLogTerm: 0, logs: [{0 0}]
+016430 INFO Server 1(term: 1) with role Follower received heartbeat from leader id 4 with args AppendEntriesArgs{Term: 1, LeaderId: 4, PrevLogIndex: -1, PrevLogTerm: -1, LeaderCommit: 0, Entries: []}
+016430 LOG1 Server 1 log size: 1 lastLogTerm: 0, logs: [{0 0}]
+016900 LEAD Server 4(term: 1, electionState: ElectionState: role: Leader, CurrentTerm: 1, VotedFor: 4) has 2 logs with lastLogTerm: 1 [thread: 2]
+016901 LEAD Server 4(term: 1, electionState: ElectionState: role: Leader, CurrentTerm: 1, VotedFor: 4) has 2 logs with lastLogTerm: 1 [thread: 1]
+016901 LEAD Server 4 has no logs to replicate for server 1
+016901 LEAD Server 4(term: 1, electionState: ElectionState: role: Leader, CurrentTerm: 1, VotedFor: 4) has 2 logs with lastLogTerm: 1 [thread: 0]
+016901 LEAD Server 4(term: 1, electionState: ElectionState: role: Leader, CurrentTerm: 1, VotedFor: 4) has 2 logs with lastLogTerm: 1 [thread: 3]
+016902 LEAD Server 4 has no logs to replicate for server 3
+016901 LEAD Server 4 has no logs to replicate for server 0
+016901 LEAD Server 4 has no logs to replicate for server 2
+016919 INFO Server 2(term: 1) with role Follower received heartbeat from leader id 4 with args AppendEntriesArgs{Term: 1, LeaderId: 4, PrevLogIndex: -1, PrevLogTerm: -1, LeaderCommit: 0, Entries: []}
+016919 INFO Server 1(term: 1) with role Follower received heartbeat from leader id 4 with args AppendEntriesArgs{Term: 1, LeaderId: 4, PrevLogIndex: -1, PrevLogTerm: -1, LeaderCommit: 0, Entries: []}
+016920 LOG1 Server 1 log size: 1 lastLogTerm: 0, logs: [{0 0}]
+016921 INFO Server 3(term: 1) with role Follower received heartbeat from leader id 4 with args AppendEntriesArgs{Term: 1, LeaderId: 4, PrevLogIndex: -1, PrevLogTerm: -1, LeaderCommit: 0, Entries: []}
+016922 LOG1 Server 3 log size: 1 lastLogTerm: 0, logs: [{0 0}]
+016919 LOG1 Server 2 log size: 1 lastLogTerm: 0, logs: [{0 0}]
+016921 INFO Server 0(term: 1) with role Follower received heartbeat from leader id 4 with args AppendEntriesArgs{Term: 1, LeaderId: 4, PrevLogIndex: -1, PrevLogTerm: -1, LeaderCommit: 0, Entries: []}
+016923 LOG1 Server 0 log size: 1 lastLogTerm: 0, logs: [{0 0}]
+017431 INFO Server 0(term: 1) with role Follower received heartbeat from leader id 4 with args AppendEntriesArgs{Term: 1, LeaderId: 4, PrevLogIndex: -1, PrevLogTerm: -1, LeaderCommit: 0, Entries: []}
+017432 LOG1 Server 0 log size: 1 lastLogTerm: 0, logs: [{0 0}]
+017433 INFO Server 3(term: 1) with role Follower received heartbeat from leader id 4 with args AppendEntriesArgs{Term: 1, LeaderId: 4, PrevLogIndex: -1, PrevLogTerm: -1, LeaderCommit: 0, Entries: []}
+017433 LOG1 Server 3 log size: 1 lastLogTerm: 0, logs: [{0 0}]
+017434 INFO Server 1(term: 1) with role Follower received heartbeat from leader id 4 with args AppendEntriesArgs{Term: 1, LeaderId: 4, PrevLogIndex: -1, PrevLogTerm: -1, LeaderCommit: 0, Entries: []}
+017434 LOG1 Server 1 log size: 1 lastLogTerm: 0, logs: [{0 0}]
+017434 INFO Server 2(term: 1) with role Follower received heartbeat from leader id 4 with args AppendEntriesArgs{Term: 1, LeaderId: 4, PrevLogIndex: -1, PrevLogTerm: -1, LeaderCommit: 0, Entries: []}
+017435 LOG1 Server 2 log size: 1 lastLogTerm: 0, logs: [{0 0}]
+017906 LEAD Server 4(term: 1, electionState: ElectionState: role: Leader, CurrentTerm: 1, VotedFor: 4) has 2 logs with lastLogTerm: 1 [thread: 3]
+017908 LEAD Server 4 has no logs to replicate for server 3
+017909 LEAD Server 4(term: 1, electionState: ElectionState: role: Leader, CurrentTerm: 1, VotedFor: 4) has 2 logs with lastLogTerm: 1 [thread: 0]
+017909 LEAD Server 4 has no logs to replicate for server 0
+017909 LEAD Server 4(term: 1, electionState: ElectionState: role: Leader, CurrentTerm: 1, VotedFor: 4) has 2 logs with lastLogTerm: 1 [thread: 2]
+017910 LEAD Server 4 has no logs to replicate for server 2
+017910 LEAD Server 4(term: 1, electionState: ElectionState: role: Leader, CurrentTerm: 1, VotedFor: 4) has 2 logs with lastLogTerm: 1 [thread: 1]
+017911 LEAD Server 4 has no logs to replicate for server 1
+017935 INFO Server 2(term: 1) with role Follower received heartbeat from leader id 4 with args AppendEntriesArgs{Term: 1, LeaderId: 4, PrevLogIndex: -1, PrevLogTerm: -1, LeaderCommit: 0, Entries: []}
+017936 LOG1 Server 2 log size: 1 lastLogTerm: 0, logs: [{0 0}]
+017937 INFO Server 1(term: 1) with role Follower received heartbeat from leader id 4 with args AppendEntriesArgs{Term: 1, LeaderId: 4, PrevLogIndex: -1, PrevLogTerm: -1, LeaderCommit: 0, Entries: []}
+017939 LOG1 Server 1 log size: 1 lastLogTerm: 0, logs: [{0 0}]
+017940 INFO Server 0(term: 1) with role Follower received heartbeat from leader id 4 with args AppendEntriesArgs{Term: 1, LeaderId: 4, PrevLogIndex: -1, PrevLogTerm: -1, LeaderCommit: 0, Entries: []}
+017940 LOG1 Server 0 log size: 1 lastLogTerm: 0, logs: [{0 0}]
+017953 INFO Server 3(term: 1) with role Follower received heartbeat from leader id 4 with args AppendEntriesArgs{Term: 1, LeaderId: 4, PrevLogIndex: -1, PrevLogTerm: -1, LeaderCommit: 0, Entries: []}
+017953 LOG1 Server 3 log size: 1 lastLogTerm: 0, logs: [{0 0}]
+018444 INFO Server 1(term: 1) with role Follower received heartbeat from leader id 4 with args AppendEntriesArgs{Term: 1, LeaderId: 4, PrevLogIndex: -1, PrevLogTerm: -1, LeaderCommit: 0, Entries: []}
+018445 LOG1 Server 1 log size: 1 lastLogTerm: 0, logs: [{0 0}]
+018448 INFO Server 3(term: 1) with role Follower received heartbeat from leader id 4 with args AppendEntriesArgs{Term: 1, LeaderId: 4, PrevLogIndex: -1, PrevLogTerm: -1, LeaderCommit: 0, Entries: []}
+018448 LOG1 Server 3 log size: 1 lastLogTerm: 0, logs: [{0 0}]
+018448 INFO Server 0(term: 1) with role Follower received heartbeat from leader id 4 with args AppendEntriesArgs{Term: 1, LeaderId: 4, PrevLogIndex: -1, PrevLogTerm: -1, LeaderCommit: 0, Entries: []}
+018449 INFO Server 2(term: 1) with role Follower received heartbeat from leader id 4 with args AppendEntriesArgs{Term: 1, LeaderId: 4, PrevLogIndex: -1, PrevLogTerm: -1, LeaderCommit: 0, Entries: []}
+018449 LOG1 Server 0 log size: 1 lastLogTerm: 0, logs: [{0 0}]
+018449 LOG1 Server 2 log size: 1 lastLogTerm: 0, logs: [{0 0}]
+018909 LEAD Server 4(term: 1, electionState: ElectionState: role: Leader, CurrentTerm: 1, VotedFor: 4) has 2 logs with lastLogTerm: 1 [thread: 3]
+018911 LEAD Server 4 has no logs to replicate for server 3
+018911 LEAD Server 4(term: 1, electionState: ElectionState: role: Leader, CurrentTerm: 1, VotedFor: 4) has 2 logs with lastLogTerm: 1 [thread: 0]
+018911 LEAD Server 4 has no logs to replicate for server 0
+018911 LEAD Server 4(term: 1, electionState: ElectionState: role: Leader, CurrentTerm: 1, VotedFor: 4) has 2 logs with lastLogTerm: 1 [thread: 1]
+018912 LEAD Server 4 has no logs to replicate for server 1
+018912 LEAD Server 4(term: 1, electionState: ElectionState: role: Leader, CurrentTerm: 1, VotedFor: 4) has 2 logs with lastLogTerm: 1 [thread: 2]
+018913 LEAD Server 4 has no logs to replicate for server 2
+018951 INFO Server 3(term: 1) with role Follower received heartbeat from leader id 4 with args AppendEntriesArgs{Term: 1, LeaderId: 4, PrevLogIndex: -1, PrevLogTerm: -1, LeaderCommit: 0, Entries: []}
+018951 LOG1 Server 3 log size: 1 lastLogTerm: 0, logs: [{0 0}]
+018951 INFO Server 1(term: 1) with role Follower received heartbeat from leader id 4 with args AppendEntriesArgs{Term: 1, LeaderId: 4, PrevLogIndex: -1, PrevLogTerm: -1, LeaderCommit: 0, Entries: []}
+018952 LOG1 Server 1 log size: 1 lastLogTerm: 0, logs: [{0 0}]
+018953 INFO Server 0(term: 1) with role Follower received heartbeat from leader id 4 with args AppendEntriesArgs{Term: 1, LeaderId: 4, PrevLogIndex: -1, PrevLogTerm: -1, LeaderCommit: 0, Entries: []}
+018953 LOG1 Server 0 log size: 1 lastLogTerm: 0, logs: [{0 0}]
+018956 INFO Server 2(term: 1) with role Follower received heartbeat from leader id 4 with args AppendEntriesArgs{Term: 1, LeaderId: 4, PrevLogIndex: -1, PrevLogTerm: -1, LeaderCommit: 0, Entries: []}
+018956 LOG1 Server 2 log size: 1 lastLogTerm: 0, logs: [{0 0}]
+019454 INFO Server 3(term: 1) with role Follower received heartbeat from leader id 4 with args AppendEntriesArgs{Term: 1, LeaderId: 4, PrevLogIndex: -1, PrevLogTerm: -1, LeaderCommit: 0, Entries: []}
+019454 LOG1 Server 3 log size: 1 lastLogTerm: 0, logs: [{0 0}]
+019457 INFO Server 2(term: 1) with role Follower received heartbeat from leader id 4 with args AppendEntriesArgs{Term: 1, LeaderId: 4, PrevLogIndex: -1, PrevLogTerm: -1, LeaderCommit: 0, Entries: []}
+019457 LOG1 Server 2 log size: 1 lastLogTerm: 0, logs: [{0 0}]
+019458 INFO Server 1(term: 1) with role Follower received heartbeat from leader id 4 with args AppendEntriesArgs{Term: 1, LeaderId: 4, PrevLogIndex: -1, PrevLogTerm: -1, LeaderCommit: 0, Entries: []}
+019458 LOG1 Server 1 log size: 1 lastLogTerm: 0, logs: [{0 0}]
+019458 INFO Server 0(term: 1) with role Follower received heartbeat from leader id 4 with args AppendEntriesArgs{Term: 1, LeaderId: 4, PrevLogIndex: -1, PrevLogTerm: -1, LeaderCommit: 0, Entries: []}
+019459 LOG1 Server 0 log size: 1 lastLogTerm: 0, logs: [{0 0}]
+019911 LEAD Server 4(term: 1, electionState: ElectionState: role: Leader, CurrentTerm: 1, VotedFor: 4) has 2 logs with lastLogTerm: 1 [thread: 3]
+019912 LEAD Server 4 has no logs to replicate for server 3
+019912 LEAD Server 4(term: 1, electionState: ElectionState: role: Leader, CurrentTerm: 1, VotedFor: 4) has 2 logs with lastLogTerm: 1 [thread: 0]
+019912 LEAD Server 4(term: 1, electionState: ElectionState: role: Leader, CurrentTerm: 1, VotedFor: 4) has 2 logs with lastLogTerm: 1 [thread: 1]
+019913 LEAD Server 4 has no logs to replicate for server 1
+019913 LEAD Server 4 has no logs to replicate for server 0
+019913 LEAD Server 4(term: 1, electionState: ElectionState: role: Leader, CurrentTerm: 1, VotedFor: 4) has 2 logs with lastLogTerm: 1 [thread: 2]
+019914 LEAD Server 4 has no logs to replicate for server 2
+019956 INFO Server 2(term: 1) with role Follower received heartbeat from leader id 4 with args AppendEntriesArgs{Term: 1, LeaderId: 4, PrevLogIndex: -1, PrevLogTerm: -1, LeaderCommit: 0, Entries: []}
+019956 INFO Server 0(term: 1) with role Follower received heartbeat from leader id 4 with args AppendEntriesArgs{Term: 1, LeaderId: 4, PrevLogIndex: -1, PrevLogTerm: -1, LeaderCommit: 0, Entries: []}
+019956 LOG1 Server 2 log size: 1 lastLogTerm: 0, logs: [{0 0}]
+019957 LOG1 Server 0 log size: 1 lastLogTerm: 0, logs: [{0 0}]
+019957 INFO Server 3(term: 1) with role Follower received heartbeat from leader id 4 with args AppendEntriesArgs{Term: 1, LeaderId: 4, PrevLogIndex: -1, PrevLogTerm: -1, LeaderCommit: 0, Entries: []}
+019957 LOG1 Server 3 log size: 1 lastLogTerm: 0, logs: [{0 0}]
+019957 INFO Server 1(term: 1) with role Follower received heartbeat from leader id 4 with args AppendEntriesArgs{Term: 1, LeaderId: 4, PrevLogIndex: -1, PrevLogTerm: -1, LeaderCommit: 0, Entries: []}
+019957 LOG1 Server 1 log size: 1 lastLogTerm: 0, logs: [{0 0}]
+020457 INFO Server 2(term: 1) with role Follower received heartbeat from leader id 4 with args AppendEntriesArgs{Term: 1, LeaderId: 4, PrevLogIndex: -1, PrevLogTerm: -1, LeaderCommit: 0, Entries: []}
+020457 LOG1 Server 2 log size: 1 lastLogTerm: 0, logs: [{0 0}]
+020459 INFO Server 3(term: 1) with role Follower received heartbeat from leader id 4 with args AppendEntriesArgs{Term: 1, LeaderId: 4, PrevLogIndex: -1, PrevLogTerm: -1, LeaderCommit: 0, Entries: []}
+020460 LOG1 Server 3 log size: 1 lastLogTerm: 0, logs: [{0 0}]
+020460 INFO Server 0(term: 1) with role Follower received heartbeat from leader id 4 with args AppendEntriesArgs{Term: 1, LeaderId: 4, PrevLogIndex: -1, PrevLogTerm: -1, LeaderCommit: 0, Entries: []}
+020460 LOG1 Server 0 log size: 1 lastLogTerm: 0, logs: [{0 0}]
+020461 INFO Server 1(term: 1) with role Follower received heartbeat from leader id 4 with args AppendEntriesArgs{Term: 1, LeaderId: 4, PrevLogIndex: -1, PrevLogTerm: -1, LeaderCommit: 0, Entries: []}
+020462 LOG1 Server 1 log size: 1 lastLogTerm: 0, logs: [{0 0}]
+020913 LEAD Server 4(term: 1, electionState: ElectionState: role: Leader, CurrentTerm: 1, VotedFor: 4) has 2 logs with lastLogTerm: 1 [thread: 3]
+020914 LEAD Server 4 has no logs to replicate for server 3
+020914 LEAD Server 4(term: 1, electionState: ElectionState: role: Leader, CurrentTerm: 1, VotedFor: 4) has 2 logs with lastLogTerm: 1 [thread: 0]
+020914 LEAD Server 4 has no logs to replicate for server 0
+020914 LEAD Server 4(term: 1, electionState: ElectionState: role: Leader, CurrentTerm: 1, VotedFor: 4) has 2 logs with lastLogTerm: 1 [thread: 1]
+020915 LEAD Server 4 has no logs to replicate for server 1
+020915 LEAD Server 4(term: 1, electionState: ElectionState: role: Leader, CurrentTerm: 1, VotedFor: 4) has 2 logs with lastLogTerm: 1 [thread: 2]
+020915 LEAD Server 4 has no logs to replicate for server 2
+020960 INFO Server 2(term: 1) with role Follower received heartbeat from leader id 4 with args AppendEntriesArgs{Term: 1, LeaderId: 4, PrevLogIndex: -1, PrevLogTerm: -1, LeaderCommit: 0, Entries: []}
+020960 LOG1 Server 2 log size: 1 lastLogTerm: 0, logs: [{0 0}]
+020961 INFO Server 3(term: 1) with role Follower received heartbeat from leader id 4 with args AppendEntriesArgs{Term: 1, LeaderId: 4, PrevLogIndex: -1, PrevLogTerm: -1, LeaderCommit: 0, Entries: []}
+020961 INFO Server 1(term: 1) with role Follower received heartbeat from leader id 4 with args AppendEntriesArgs{Term: 1, LeaderId: 4, PrevLogIndex: -1, PrevLogTerm: -1, LeaderCommit: 0, Entries: []}
+020962 LOG1 Server 1 log size: 1 lastLogTerm: 0, logs: [{0 0}]
+020962 INFO Server 0(term: 1) with role Follower received heartbeat from leader id 4 with args AppendEntriesArgs{Term: 1, LeaderId: 4, PrevLogIndex: -1, PrevLogTerm: -1, LeaderCommit: 0, Entries: []}
+020962 LOG1 Server 0 log size: 1 lastLogTerm: 0, logs: [{0 0}]
+020961 LOG1 Server 3 log size: 1 lastLogTerm: 0, logs: [{0 0}]
+021462 INFO Server 3(term: 1) with role Follower received heartbeat from leader id 4 with args AppendEntriesArgs{Term: 1, LeaderId: 4, PrevLogIndex: -1, PrevLogTerm: -1, LeaderCommit: 0, Entries: []}
+021462 LOG1 Server 3 log size: 1 lastLogTerm: 0, logs: [{0 0}]
+021462 INFO Server 1(term: 1) with role Follower received heartbeat from leader id 4 with args AppendEntriesArgs{Term: 1, LeaderId: 4, PrevLogIndex: -1, PrevLogTerm: -1, LeaderCommit: 0, Entries: []}
+021463 LOG1 Server 1 log size: 1 lastLogTerm: 0, logs: [{0 0}]
+021462 INFO Server 2(term: 1) with role Follower received heartbeat from leader id 4 with args AppendEntriesArgs{Term: 1, LeaderId: 4, PrevLogIndex: -1, PrevLogTerm: -1, LeaderCommit: 0, Entries: []}
+021464 LOG1 Server 2 log size: 1 lastLogTerm: 0, logs: [{0 0}]
+021481 INFO Server 0(term: 1) with role Follower received heartbeat from leader id 4 with args AppendEntriesArgs{Term: 1, LeaderId: 4, PrevLogIndex: -1, PrevLogTerm: -1, LeaderCommit: 0, Entries: []}
+021481 LOG1 Server 0 log size: 1 lastLogTerm: 0, logs: [{0 0}]
+021930 LEAD Server 4(term: 1, electionState: ElectionState: role: Leader, CurrentTerm: 1, VotedFor: 4) has 2 logs with lastLogTerm: 1 [thread: 1]
+021930 LEAD Server 4 has no logs to replicate for server 1
+021931 LEAD Server 4(term: 1, electionState: ElectionState: role: Leader, CurrentTerm: 1, VotedFor: 4) has 2 logs with lastLogTerm: 1 [thread: 0]
+021931 LEAD Server 4 has no logs to replicate for server 0
+021932 LEAD Server 4(term: 1, electionState: ElectionState: role: Leader, CurrentTerm: 1, VotedFor: 4) has 2 logs with lastLogTerm: 1 [thread: 3]
+021932 LEAD Server 4(term: 1, electionState: ElectionState: role: Leader, CurrentTerm: 1, VotedFor: 4) has 2 logs with lastLogTerm: 1 [thread: 2]
+021933 LEAD Server 4 has no logs to replicate for server 2
+021933 LEAD Server 4 has no logs to replicate for server 3
+021971 INFO Server 0(term: 1) with role Follower received heartbeat from leader id 4 with args AppendEntriesArgs{Term: 1, LeaderId: 4, PrevLogIndex: -1, PrevLogTerm: -1, LeaderCommit: 0, Entries: []}
+021971 LOG1 Server 0 log size: 1 lastLogTerm: 0, logs: [{0 0}]
+021973 INFO Server 2(term: 1) with role Follower received heartbeat from leader id 4 with args AppendEntriesArgs{Term: 1, LeaderId: 4, PrevLogIndex: -1, PrevLogTerm: -1, LeaderCommit: 0, Entries: []}
+021974 LOG1 Server 2 log size: 1 lastLogTerm: 0, logs: [{0 0}]
+021974 INFO Server 3(term: 1) with role Follower received heartbeat from leader id 4 with args AppendEntriesArgs{Term: 1, LeaderId: 4, PrevLogIndex: -1, PrevLogTerm: -1, LeaderCommit: 0, Entries: []}
+021975 LOG1 Server 3 log size: 1 lastLogTerm: 0, logs: [{0 0}]
+021977 INFO Server 1(term: 1) with role Follower received heartbeat from leader id 4 with args AppendEntriesArgs{Term: 1, LeaderId: 4, PrevLogIndex: -1, PrevLogTerm: -1, LeaderCommit: 0, Entries: []}
+021978 LOG1 Server 1 log size: 1 lastLogTerm: 0, logs: [{0 0}]
+022484 INFO Server 2(term: 1) with role Follower received heartbeat from leader id 4 with args AppendEntriesArgs{Term: 1, LeaderId: 4, PrevLogIndex: -1, PrevLogTerm: -1, LeaderCommit: 0, Entries: []}
+022485 LOG1 Server 2 log size: 1 lastLogTerm: 0, logs: [{0 0}]
+022487 INFO Server 1(term: 1) with role Follower received heartbeat from leader id 4 with args AppendEntriesArgs{Term: 1, LeaderId: 4, PrevLogIndex: -1, PrevLogTerm: -1, LeaderCommit: 0, Entries: []}
+022488 LOG1 Server 1 log size: 1 lastLogTerm: 0, logs: [{0 0}]
+022490 INFO Server 0(term: 1) with role Follower received heartbeat from leader id 4 with args AppendEntriesArgs{Term: 1, LeaderId: 4, PrevLogIndex: -1, PrevLogTerm: -1, LeaderCommit: 0, Entries: []}
+022490 LOG1 Server 0 log size: 1 lastLogTerm: 0, logs: [{0 0}]
+022493 INFO Server 3(term: 1) with role Follower received heartbeat from leader id 4 with args AppendEntriesArgs{Term: 1, LeaderId: 4, PrevLogIndex: -1, PrevLogTerm: -1, LeaderCommit: 0, Entries: []}
+022493 LOG1 Server 3 log size: 1 lastLogTerm: 0, logs: [{0 0}]
+022931 LEAD Server 4(term: 1, electionState: ElectionState: role: Leader, CurrentTerm: 1, VotedFor: 4) has 2 logs with lastLogTerm: 1 [thread: 1]
+022933 LEAD Server 4 has no logs to replicate for server 1
+022936 LEAD Server 4(term: 1, electionState: ElectionState: role: Leader, CurrentTerm: 1, VotedFor: 4) has 2 logs with lastLogTerm: 1 [thread: 0]
+022936 LEAD Server 4(term: 1, electionState: ElectionState: role: Leader, CurrentTerm: 1, VotedFor: 4) has 2 logs with lastLogTerm: 1 [thread: 2]
+022937 LEAD Server 4 has no logs to replicate for server 0
+022937 LEAD Server 4 has no logs to replicate for server 2
+022937 LEAD Server 4(term: 1, electionState: ElectionState: role: Leader, CurrentTerm: 1, VotedFor: 4) has 2 logs with lastLogTerm: 1 [thread: 3]
+022938 LEAD Server 4 has no logs to replicate for server 3
+022980 INFO Server 2(term: 1) with role Follower received heartbeat from leader id 4 with args AppendEntriesArgs{Term: 1, LeaderId: 4, PrevLogIndex: -1, PrevLogTerm: -1, LeaderCommit: 0, Entries: []}
+022981 LOG1 Server 2 log size: 1 lastLogTerm: 0, logs: [{0 0}]
+022983 INFO Server 1(term: 1) with role Follower received heartbeat from leader id 4 with args AppendEntriesArgs{Term: 1, LeaderId: 4, PrevLogIndex: -1, PrevLogTerm: -1, LeaderCommit: 0, Entries: []}
+022983 LOG1 Server 1 log size: 1 lastLogTerm: 0, logs: [{0 0}]
+022983 INFO Server 3(term: 1) with role Follower received heartbeat from leader id 4 with args AppendEntriesArgs{Term: 1, LeaderId: 4, PrevLogIndex: -1, PrevLogTerm: -1, LeaderCommit: 0, Entries: []}
+022984 LOG1 Server 3 log size: 1 lastLogTerm: 0, logs: [{0 0}]
+022985 INFO Server 0(term: 1) with role Follower received heartbeat from leader id 4 with args AppendEntriesArgs{Term: 1, LeaderId: 4, PrevLogIndex: -1, PrevLogTerm: -1, LeaderCommit: 0, Entries: []}
+022986 LOG1 Server 0 log size: 1 lastLogTerm: 0, logs: [{0 0}]
+023480 INFO Server 3(term: 1) with role Follower received heartbeat from leader id 4 with args AppendEntriesArgs{Term: 1, LeaderId: 4, PrevLogIndex: -1, PrevLogTerm: -1, LeaderCommit: 0, Entries: []}
+023481 LOG1 Server 3 log size: 1 lastLogTerm: 0, logs: [{0 0}]
+023482 INFO Server 0(term: 1) with role Follower received heartbeat from leader id 4 with args AppendEntriesArgs{Term: 1, LeaderId: 4, PrevLogIndex: -1, PrevLogTerm: -1, LeaderCommit: 0, Entries: []}
+023482 LOG1 Server 0 log size: 1 lastLogTerm: 0, logs: [{0 0}]
+023483 INFO Server 1(term: 1) with role Follower received heartbeat from leader id 4 with args AppendEntriesArgs{Term: 1, LeaderId: 4, PrevLogIndex: -1, PrevLogTerm: -1, LeaderCommit: 0, Entries: []}
+023482 INFO Server 2(term: 1) with role Follower received heartbeat from leader id 4 with args AppendEntriesArgs{Term: 1, LeaderId: 4, PrevLogIndex: -1, PrevLogTerm: -1, LeaderCommit: 0, Entries: []}
+023484 LOG1 Server 2 log size: 1 lastLogTerm: 0, logs: [{0 0}]
+023483 LOG1 Server 1 log size: 1 lastLogTerm: 0, logs: [{0 0}]
+--- FAIL: TestFailNoAgree3B (2.37s)
+    config.go:601: one(10) failed to reach agreement
 FAIL
 exit status 1
-FAIL	6.5840/raft	2.677s
+FAIL	6.5840/raft	2.449s

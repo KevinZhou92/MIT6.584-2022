@@ -110,6 +110,7 @@ func (rf *Raft) GetState() (int, bool) {
 	// Your code here (3A).
 	term = rf.electionState.CurrentTerm
 	isleader = rf.electionState.Role == LEADER
+	Debug(dLog, "Server %d(term: %d) is %s", rf.me, term, roleMap[rf.electionState.Role])
 
 	return term, isleader
 }
@@ -134,6 +135,8 @@ func (rf *Raft) Start(command interface{}) (int, int, bool) {
 	defer rf.mu.Unlock()
 
 	term, isLeader := rf.electionState.CurrentTerm, rf.electionState.Role == LEADER
+
+	Debug(dLog, "Server %d(term: %d) is %s and Start() received command %v", rf.me, term, roleMap[rf.electionState.Role], command)
 
 	// return immediately if current peer is not leader
 	if !isLeader {
@@ -170,7 +173,7 @@ func (rf *Raft) ticker() {
 		// Check if a leader election should be started.
 		// pause for a random amount of time between 50 and 350
 		// milliseconds.
-		timeout := (300 + time.Duration(rand.Int63()%300)) * time.Millisecond
+		timeout := (300 + time.Duration(rand.Int63()%200)) * time.Millisecond
 		time.Sleep(timeout)
 		// Debug(dLog, "Server %d is %s", rf.me, roleMap[rf.state.role])
 		// Debug(dTerm, "Server %d term is %d", rf.me, rf.state.currentTerm)

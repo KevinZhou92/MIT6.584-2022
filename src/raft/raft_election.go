@@ -51,7 +51,7 @@ func (rf *Raft) shoudStartElection(timeout time.Duration) bool {
 func (rf *Raft) election() {
 	currentTerm := rf.getCurrentTerm()
 	Debug(dVote, "Server %d started election, current term %d, current role %s", rf.me, currentTerm, roleMap[rf.GetRole()])
-	ms := 300 + (rand.Int63() % 300)
+	ms := 300 + (rand.Int63() % 200)
 	deadline := time.After(time.Duration(ms) * time.Millisecond)
 
 	resultCh := make(chan RequestVoteReply, len(rf.peers))
